@@ -29,5 +29,5 @@ Hi, I'm Quynh Trang Do. I'm a Master's student in Data Science & Analytics, pass
 | Project | Description |
 |-----------------------------|-------------------------------------------|
 | [Hands-on Exercise 1](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex01/hands-on_ex01) | A Layered Grammar of Graphics: ggplot2 methods |
-| [Hands-on Exercise 2](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex02/hands-on_ex02) | A Layered Grammar of Graphics: ggplot2 methods |
+| [Hands-on Exercise 2](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex02/hands-on_ex02) | Beyond ggplot2 Fundamentals | |
 :::
