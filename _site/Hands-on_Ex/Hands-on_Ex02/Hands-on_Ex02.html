@@ -177,20 +177,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#annotation-challenge-when-having-large-number-of-data-points" id="toc-annotation-challenge-when-having-large-number-of-data-points" class="nav-link" data-scroll-target="#annotation-challenge-when-having-large-number-of-data-points">Annotation challenge when having large number of data points</a></li>
   <li><a href="#solution-ggrepel" id="toc-solution-ggrepel" class="nav-link" data-scroll-target="#solution-ggrepel">Solution: ggrepel</a></li>
   </ul></li>
-  <li><a href="#beyond-ggplot2-themes-ggplot2-built-in-themes" id="toc-beyond-ggplot2-themes-ggplot2-built-in-themes" class="nav-link" data-scroll-target="#beyond-ggplot2-themes-ggplot2-built-in-themes">Beyond ggplot2 Themes ##ggplot2 built-in themes</a>
+  <li><a href="#beyond-ggplot2-themes" id="toc-beyond-ggplot2-themes" class="nav-link" data-scroll-target="#beyond-ggplot2-themes">Beyond ggplot2 Themes</a>
   <ul class="collapse">
-  <li><a href="#ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2" id="toc-ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2" class="nav-link" data-scroll-target="#ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2">ggtheme package: Extra Themes, Scales and Geoms for ‘ggplot2’</a>
-  <ul class="collapse">
-  <li><a href="#the-economist-theme" id="toc-the-economist-theme" class="nav-link" data-scroll-target="#the-economist-theme">The Economist theme</a></li>
-  <li><a href="#stata-theme" id="toc-stata-theme" class="nav-link" data-scroll-target="#stata-theme">Stata theme</a></li>
-  </ul></li>
+  <li><a href="#ggplot2-built-in-themes" id="toc-ggplot2-built-in-themes" class="nav-link" data-scroll-target="#ggplot2-built-in-themes">ggplot2 built-in themes</a></li>
+  <li><a href="#ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2" id="toc-ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2" class="nav-link" data-scroll-target="#ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2">ggtheme package: Extra Themes, Scales and Geoms for ‘ggplot2’</a></li>
   <li><a href="#hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2" id="toc-hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2" class="nav-link" data-scroll-target="#hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2">hrbthems package: Additional Themes, Theme Components and Utilities for ‘ggplot2’</a></li>
   </ul></li>
   <li><a href="#beyond-single-graph-patchwork-methods" id="toc-beyond-single-graph-patchwork-methods" class="nav-link" data-scroll-target="#beyond-single-graph-patchwork-methods">Beyond Single Graph: patchwork methods</a>
   <ul class="collapse">
   <li><a href="#create-individual-graph" id="toc-create-individual-graph" class="nav-link" data-scroll-target="#create-individual-graph">Create individual graph</a></li>
   <li><a href="#combine-two-ggplot2-graphs" id="toc-combine-two-ggplot2-graphs" class="nav-link" data-scroll-target="#combine-two-ggplot2-graphs">Combine two ggplot2 graphs</a></li>
-  <li><a href="#combine-three-ggplot2-graphs" id="toc-combine-three-ggplot2-graphs" class="nav-link" data-scroll-target="#combine-three-ggplot2-graphs">Combine three ggplot2 graphs</a></li>
+  <li><a href="#combine-multiple-ggplot2-graphs" id="toc-combine-multiple-ggplot2-graphs" class="nav-link" data-scroll-target="#combine-multiple-ggplot2-graphs">Combine multiple ggplot2 graphs</a></li>
   <li><a href="#create-a-composite-figure-with-tag" id="toc-create-a-composite-figure-with-tag" class="nav-link" data-scroll-target="#create-a-composite-figure-with-tag">Create a composite figure with tag</a></li>
   <li><a href="#create-figure-with-insert" id="toc-create-figure-with-insert" class="nav-link" data-scroll-target="#create-figure-with-insert">Create figure with insert</a></li>
   <li><a href="#combine-patchwork-and-ggtheme" id="toc-combine-patchwork-and-ggtheme" class="nav-link" data-scroll-target="#combine-patchwork-and-ggtheme">Combine patchwork and ggtheme</a></li>
@@ -336,8 +333,10 @@ increasing max.overlaps</code></pre>
 </div>
 </section>
 </section>
-<section id="beyond-ggplot2-themes-ggplot2-built-in-themes" class="level1">
-<h1>Beyond ggplot2 Themes ##ggplot2 built-in themes</h1>
+<section id="beyond-ggplot2-themes" class="level1">
+<h1>Beyond ggplot2 Themes</h1>
+<section id="ggplot2-built-in-themes" class="level2">
+<h2 class="anchored" data-anchor-id="ggplot2-built-in-themes">ggplot2 built-in themes</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -355,10 +354,10 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
+</section>
 <section id="ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2" class="level2">
 <h2 class="anchored" data-anchor-id="ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2">ggtheme package: Extra Themes, Scales and Geoms for ‘ggplot2’</h2>
-<section id="the-economist-theme" class="level3">
-<h3 class="anchored" data-anchor-id="the-economist-theme">The Economist theme</h3>
+<p><strong>Example 1: The Economist theme</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -376,9 +375,7 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="stata-theme" class="level3">
-<h3 class="anchored" data-anchor-id="stata-theme">Stata theme</h3>
+<p><strong>Example 2: Stata theme</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -396,7 +393,6 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-</section>
 </section>
 <section id="hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2" class="level2">
 <h2 class="anchored" data-anchor-id="hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2">hrbthems package: Additional Themes, Theme Components and Utilities for ‘ggplot2’</h2>
@@ -477,8 +473,8 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </section>
-<section id="combine-three-ggplot2-graphs" class="level2">
-<h2 class="anchored" data-anchor-id="combine-three-ggplot2-graphs">Combine three ggplot2 graphs</h2>
+<section id="combine-multiple-ggplot2-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="combine-multiple-ggplot2-graphs">Combine multiple ggplot2 graphs</h2>
 <ul>
 <li>“/” operator to stack two ggplot2 graphs</li>
 <li>“|” operator to place the plots beside each other</li>
@@ -561,11 +557,22 @@ increasing max.overlaps</code></pre>
 <section id="boxplot-english-score-distribution-by-class" class="level2">
 <h2 class="anchored" data-anchor-id="boxplot-english-score-distribution-by-class">1. Boxplot: English Score Distribution by Class</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(exam_data, <span class="fu">aes</span>(<span class="at">x =</span> CLASS, <span class="at">y =</span> ENGLISH)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="dv">16</span>, <span class="at">outlier.size =</span> <span class="fl">1.2</span>, <span class="at">width =</span> <span class="fl">0.7</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.8</span>)) <span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Boxplot: English Score by Class"</span>, <span class="at">x =</span> <span class="st">"Class"</span>, <span class="at">y =</span> <span class="st">"English Score"</span>)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>median_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CLASS) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">median_science =</span> <span class="fu">median</span>(SCIENCE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(exam_data, <span class="fu">aes</span>(<span class="at">x =</span> CLASS, <span class="at">y =</span> SCIENCE)) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="dv">16</span>, <span class="at">outlier.size =</span> <span class="fl">1.2</span>, <span class="at">width =</span> <span class="fl">0.7</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.8</span>)) <span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> median_data, </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">x =</span> CLASS, <span class="at">y =</span> median_science, <span class="at">label =</span> <span class="fu">round</span>(median_science, <span class="dv">1</span>)),</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fontface =</span> <span class="st">"bold"</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">nudge_y =</span> <span class="fl">0.5</span>) <span class="sc">+</span>  <span class="co"># Nudge to avoid overlap</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_solarized_2</span>() <span class="sc">+</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Boxplot: Science Score by Class"</span>, <span class="at">x =</span> <span class="st">"Class"</span>, <span class="at">y =</span> <span class="st">"Science Score"</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -578,7 +585,7 @@ increasing max.overlaps</code></pre>
 <section id="dot-plot-english-score-distribution-by-race" class="level2">
 <h2 class="anchored" data-anchor-id="dot-plot-english-score-distribution-by-race">2. Dot Plot: English Score Distribution by Race</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(exam_data, <span class="fu">aes</span>(<span class="at">x =</span> RACE, <span class="at">y =</span> ENGLISH, <span class="at">fill =</span> RACE)) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(exam_data, <span class="fu">aes</span>(<span class="at">x =</span> RACE, <span class="at">y =</span> SCIENCE, <span class="at">fill =</span> RACE)) <span class="sc">+</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">binaxis =</span> <span class="st">'y'</span>,</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackdir =</span> <span class="st">'center'</span>,</span>
@@ -587,9 +594,9 @@ increasing max.overlaps</code></pre>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">'dotdensity'</span></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Dot Plot: English Score by Race"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Dot Plot: Science Score by Race"</span>,</span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Race"</span>,</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"English Score"</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Science Score"</span></span>
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>

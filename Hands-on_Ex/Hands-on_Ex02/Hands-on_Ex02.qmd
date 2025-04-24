@@ -57,7 +57,9 @@ ggplot(data=exam_data,
   ggtitle("English scores versus Maths scores for Primary 3")
 ```
 
-# Beyond ggplot2 Themes ##ggplot2 built-in themes
+# Beyond ggplot2 Themes
+
+## ggplot2 built-in themes
 
 ```{r}
 ggplot(data=exam_data, 
@@ -72,7 +74,7 @@ ggplot(data=exam_data,
 
 ## ggtheme package: Extra Themes, Scales and Geoms for 'ggplot2'
 
-### The Economist theme
+**Example 1: The Economist theme**
 
 ```{r}
 ggplot(data=exam_data, 
@@ -85,7 +87,7 @@ ggplot(data=exam_data,
   theme_economist()
 ```
 
-### Stata theme
+**Example 2: Stata theme**
 
 ```{r}
 ggplot(data=exam_data, 
@@ -163,7 +165,7 @@ p3 <- ggplot(data=exam_data,
 p1 + p2
 ```
 
-## Combine three ggplot2 graphs
+## Combine multiple ggplot2 graphs
 
 -   “/” operator to stack two ggplot2 graphs
 -   “\|” operator to place the plots beside each other
@@ -204,10 +206,21 @@ patchwork & theme_economist()
 ## 1. Boxplot: English Score Distribution by Class
 
 ```{r}
-p1 <- ggplot(exam_data, aes(x = CLASS, y = ENGLISH)) +
+median_data <- exam_data %>%
+  group_by(CLASS) %>%
+  summarise(median_science = median(SCIENCE, na.rm = TRUE))
+
+p1 <- ggplot(exam_data, aes(x = CLASS, y = SCIENCE)) +
   geom_boxplot(outlier.shape = 16, outlier.size = 1.2, width = 0.7, position = position_dodge(0.8)) +
   scale_fill_brewer(palette = "Set2") +
-  labs(title = "Boxplot: English Score by Class", x = "Class", y = "English Score")
+  geom_text_repel(data = median_data, 
+                  aes(x = CLASS, y = median_science, label = round(median_science, 1)),
+                   fontface = "bold",
+                   size = 3,
+                   nudge_y = 0.5) +  # Nudge to avoid overlap
+  theme_solarized_2() +
+  labs(title = "Boxplot: Science Score by Class", x = "Class", y = "Science Score")
+
 p1
 
 ```
@@ -215,7 +228,7 @@ p1
 ## 2. Dot Plot: English Score Distribution by Race
 
 ```{r}
-p2 <- ggplot(exam_data, aes(x = RACE, y = ENGLISH, fill = RACE)) +
+p2 <- ggplot(exam_data, aes(x = RACE, y = SCIENCE, fill = RACE)) +
   geom_dotplot(
     binaxis = 'y',
     stackdir = 'center',
@@ -224,9 +237,9 @@ p2 <- ggplot(exam_data, aes(x = RACE, y = ENGLISH, fill = RACE)) +
     method = 'dotdensity'
   ) +
   labs(
-    title = "Dot Plot: English Score by Race",
+    title = "Dot Plot: Science Score by Race",
     x = "Race",
-    y = "English Score"
+    y = "Science Score"
   ) +
   scale_fill_brewer(palette = "Set1") +
   theme_clean() +

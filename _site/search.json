@@ -228,7 +228,7 @@
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2",
     "title": "Hands-on_Ex02",
     "section": "ggtheme package: Extra Themes, Scales and Geoms for ‘ggplot2’",
-    "text": "ggtheme package: Extra Themes, Scales and Geoms for ‘ggplot2’\n\nThe Economist theme\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_economist()\n\n\n\n\n\n\n\n\n\n\nStata theme\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_stata()"
+    "text": "ggtheme package: Extra Themes, Scales and Geoms for ‘ggplot2’\nExample 1: The Economist theme\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_economist()\n\n\n\n\n\n\n\n\nExample 2: Stata theme\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_stata()"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#raincloud-plot-scores-by-subject-malay-students",
@@ -242,14 +242,14 @@
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#boxplot-english-score-distribution-by-class",
     "title": "Hands-on_Ex02",
     "section": "1. Boxplot: English Score Distribution by Class",
-    "text": "1. Boxplot: English Score Distribution by Class\n\np1 &lt;- ggplot(exam_data, aes(x = CLASS, y = ENGLISH)) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.2, width = 0.7, position = position_dodge(0.8)) +\n  scale_fill_brewer(palette = \"Set2\") +\n  labs(title = \"Boxplot: English Score by Class\", x = \"Class\", y = \"English Score\")\np1"
+    "text": "1. Boxplot: English Score Distribution by Class\n\nmedian_data &lt;- exam_data %&gt;%\n  group_by(CLASS) %&gt;%\n  summarise(median_science = median(SCIENCE, na.rm = TRUE))\n\np1 &lt;- ggplot(exam_data, aes(x = CLASS, y = SCIENCE)) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.2, width = 0.7, position = position_dodge(0.8)) +\n  scale_fill_brewer(palette = \"Set2\") +\n  geom_text_repel(data = median_data, \n                  aes(x = CLASS, y = median_science, label = round(median_science, 1)),\n                   fontface = \"bold\",\n                   size = 3,\n                   nudge_y = 0.5) +  # Nudge to avoid overlap\n  theme_solarized_2() +\n  labs(title = \"Boxplot: Science Score by Class\", x = \"Class\", y = \"Science Score\")\n\np1"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#dot-plot-english-score-distribution-by-race",
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#dot-plot-english-score-distribution-by-race",
     "title": "Hands-on_Ex02",
     "section": "2. Dot Plot: English Score Distribution by Race",
-    "text": "2. Dot Plot: English Score Distribution by Race\n\np2 &lt;- ggplot(exam_data, aes(x = RACE, y = ENGLISH, fill = RACE)) +\n  geom_dotplot(\n    binaxis = 'y',\n    stackdir = 'center',\n    dotsize = 0.7,\n    binwidth = 2,         # Try 1 or 2 based on your data's spread\n    method = 'dotdensity'\n  ) +\n  labs(\n    title = \"Dot Plot: English Score by Race\",\n    x = \"Race\",\n    y = \"English Score\"\n  ) +\n  scale_fill_brewer(palette = \"Set1\") +\n  theme_clean() +\n  theme(\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 12),\n    axis.text.y = element_text(size = 11),\n    plot.title = element_text(size = 15, face = \"bold\", hjust = 0.5),\n    legend.position = \"none\"   # Remove legend since color matches x-axis\n  )\n\np2"
+    "text": "2. Dot Plot: English Score Distribution by Race\n\np2 &lt;- ggplot(exam_data, aes(x = RACE, y = SCIENCE, fill = RACE)) +\n  geom_dotplot(\n    binaxis = 'y',\n    stackdir = 'center',\n    dotsize = 0.7,\n    binwidth = 2,         # Try 1 or 2 based on your data's spread\n    method = 'dotdensity'\n  ) +\n  labs(\n    title = \"Dot Plot: Science Score by Race\",\n    x = \"Race\",\n    y = \"Science Score\"\n  ) +\n  scale_fill_brewer(palette = \"Set1\") +\n  theme_clean() +\n  theme(\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 12),\n    axis.text.y = element_text(size = 11),\n    plot.title = element_text(size = 15, face = \"bold\", hjust = 0.5),\n    legend.position = \"none\"   # Remove legend since color matches x-axis\n  )\n\np2"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#raincloud-plot-score-distribution-by-subject-malay-students",
@@ -299,5 +299,19 @@
     "title": "Hands-on_Ex02",
     "section": "Combine patchwork and ggtheme",
     "text": "Combine patchwork and ggtheme\n\npatchwork &lt;- (p1 / p2) | p3\npatchwork & theme_economist()\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#ggplot2-built-in-themes",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#ggplot2-built-in-themes",
+    "title": "Hands-on_Ex02",
+    "section": "ggplot2 built-in themes",
+    "text": "ggplot2 built-in themes\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  theme_gray() +\n  ggtitle(\"Distribution of Maths scores\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combine-multiple-ggplot2-graphs",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combine-multiple-ggplot2-graphs",
+    "title": "Hands-on_Ex02",
+    "section": "Combine multiple ggplot2 graphs",
+    "text": "Combine multiple ggplot2 graphs\n\n“/” operator to stack two ggplot2 graphs\n“|” operator to place the plots beside each other\n“()” operator the define the sequence of the plotting\n\n\n(p1 / p2) | p3\n\n`geom_smooth()` using formula = 'y ~ x'"
   }
 ]
