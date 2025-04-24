@@ -7,10 +7,10 @@ format:
     highlight-style: github
 ---
 
-Welcome to my portfolio for **ISSS608 Visual Analytics and Applications** at SMU!. 
-<div style="height: 2em;"></div>
+Welcome to my portfolio for **ISSS608 Visual Analytics and Applications** at SMU!.
 
-
+::: {style="height: 2em;"}
+:::
 
 ::: {style="background-color: #e3fcec; padding: 2em; border-radius: 12px"}
 ## 👨‍💻 About Me
@@ -20,14 +20,14 @@ Hi, I'm Quynh Trang Do. I'm a Master's student in Data Science & Analytics, pass
 [Connect with me on LinkedIn!](https://www.linkedin.com/in/trang-qdo/)
 :::
 
-<div style="height: 2em;"></div>
-
+::: {style="height: 2em;"}
+:::
 
 ::: {style="background-color: #fffbe7; padding: 2em; border-radius: 12px"}
 ## ✨ Check Out My Latest Work!
 
 | Project | Description |
-|-----------------------------|-------------------------------------------|
+|----|----|
 | [Hands-on Exercise 1](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex01/hands-on_ex01) | A Layered Grammar of Graphics: ggplot2 methods |
-| [Hands-on Exercise 2](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex02/hands-on_ex02) | Beyond ggplot2 Fundamentals | |
+| [Hands-on Exercise 2](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex02/hands-on_ex02) | Beyond ggplot2 Fundamentals |
 :::

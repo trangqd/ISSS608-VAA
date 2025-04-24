@@ -176,12 +176,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#annotation-challenge-when-having-large-number-of-data-points" id="toc-annotation-challenge-when-having-large-number-of-data-points" class="nav-link" data-scroll-target="#annotation-challenge-when-having-large-number-of-data-points">Annotation challenge when having large number of data points</a></li>
   <li><a href="#solution-ggrepel" id="toc-solution-ggrepel" class="nav-link" data-scroll-target="#solution-ggrepel">Solution: ggrepel</a></li>
+  </ul></li>
+  <li><a href="#beyond-ggplot2-themes-ggplot2-built-in-themes" id="toc-beyond-ggplot2-themes-ggplot2-built-in-themes" class="nav-link" data-scroll-target="#beyond-ggplot2-themes-ggplot2-built-in-themes">Beyond ggplot2 Themes ##ggplot2 built-in themes</a>
+  <ul class="collapse">
   <li><a href="#ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2" id="toc-ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2" class="nav-link" data-scroll-target="#ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2">ggtheme package: Extra Themes, Scales and Geoms for ‘ggplot2’</a>
   <ul class="collapse">
   <li><a href="#the-economist-theme" id="toc-the-economist-theme" class="nav-link" data-scroll-target="#the-economist-theme">The Economist theme</a></li>
   <li><a href="#stata-theme" id="toc-stata-theme" class="nav-link" data-scroll-target="#stata-theme">Stata theme</a></li>
   </ul></li>
   <li><a href="#hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2" id="toc-hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2" class="nav-link" data-scroll-target="#hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2">hrbthems package: Additional Themes, Theme Components and Utilities for ‘ggplot2’</a></li>
+  </ul></li>
   <li><a href="#beyond-single-graph-patchwork-methods" id="toc-beyond-single-graph-patchwork-methods" class="nav-link" data-scroll-target="#beyond-single-graph-patchwork-methods">Beyond Single Graph: patchwork methods</a>
   <ul class="collapse">
   <li><a href="#create-individual-graph" id="toc-create-individual-graph" class="nav-link" data-scroll-target="#create-individual-graph">Create individual graph</a></li>
@@ -190,7 +194,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#create-a-composite-figure-with-tag" id="toc-create-a-composite-figure-with-tag" class="nav-link" data-scroll-target="#create-a-composite-figure-with-tag">Create a composite figure with tag</a></li>
   <li><a href="#create-figure-with-insert" id="toc-create-figure-with-insert" class="nav-link" data-scroll-target="#create-figure-with-insert">Create figure with insert</a></li>
   <li><a href="#combine-patchwork-and-ggtheme" id="toc-combine-patchwork-and-ggtheme" class="nav-link" data-scroll-target="#combine-patchwork-and-ggtheme">Combine patchwork and ggtheme</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#further-self-practice" id="toc-further-self-practice" class="nav-link" data-scroll-target="#further-self-practice">Further self-practice</a>
   <ul class="collapse">
@@ -331,7 +334,10 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-<p>#Beyond ggplot2 Themes ##ggplot2 built-in themes</p>
+</section>
+</section>
+<section id="beyond-ggplot2-themes-ggplot2-built-in-themes" class="level1">
+<h1>Beyond ggplot2 Themes ##ggplot2 built-in themes</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -349,7 +355,6 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-</section>
 <section id="ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2" class="level2">
 <h2 class="anchored" data-anchor-id="ggtheme-package-extra-themes-scales-and-geoms-for-ggplot2">ggtheme package: Extra Themes, Scales and Geoms for ‘ggplot2’</h2>
 <section id="the-economist-theme" class="level3">
@@ -422,10 +427,11 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </section>
-<section id="beyond-single-graph-patchwork-methods" class="level2">
-<h2 class="anchored" data-anchor-id="beyond-single-graph-patchwork-methods">Beyond Single Graph: patchwork methods</h2>
-<section id="create-individual-graph" class="level3">
-<h3 class="anchored" data-anchor-id="create-individual-graph">Create individual graph</h3>
+</section>
+<section id="beyond-single-graph-patchwork-methods" class="level1">
+<h1>Beyond Single Graph: patchwork methods</h1>
+<section id="create-individual-graph" class="level2">
+<h2 class="anchored" data-anchor-id="create-individual-graph">Create individual graph</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -458,8 +464,8 @@ increasing max.overlaps</code></pre>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"English scores versus Maths scores for Primary 3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="combine-two-ggplot2-graphs" class="level3">
-<h3 class="anchored" data-anchor-id="combine-two-ggplot2-graphs">Combine two ggplot2 graphs</h3>
+<section id="combine-two-ggplot2-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="combine-two-ggplot2-graphs">Combine two ggplot2 graphs</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -471,8 +477,8 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </section>
-<section id="combine-three-ggplot2-graphs" class="level3">
-<h3 class="anchored" data-anchor-id="combine-three-ggplot2-graphs">Combine three ggplot2 graphs</h3>
+<section id="combine-three-ggplot2-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="combine-three-ggplot2-graphs">Combine three ggplot2 graphs</h2>
 <ul>
 <li>“/” operator to stack two ggplot2 graphs</li>
 <li>“|” operator to place the plots beside each other</li>
@@ -492,8 +498,8 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </section>
-<section id="create-a-composite-figure-with-tag" class="level3">
-<h3 class="anchored" data-anchor-id="create-a-composite-figure-with-tag">Create a composite figure with tag</h3>
+<section id="create-a-composite-figure-with-tag" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-composite-figure-with-tag">Create a composite figure with tag</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>((p1 <span class="sc">/</span> p2) <span class="sc">|</span> p3) <span class="sc">+</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'I'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -509,8 +515,8 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </section>
-<section id="create-figure-with-insert" class="level3">
-<h3 class="anchored" data-anchor-id="create-figure-with-insert">Create figure with insert</h3>
+<section id="create-figure-with-insert" class="level2">
+<h2 class="anchored" data-anchor-id="create-figure-with-insert">Create figure with insert</h2>
 <ul>
 <li>Place one or several plots or graphic elements freely on top or below another plot.</li>
 </ul>
@@ -532,8 +538,8 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </section>
-<section id="combine-patchwork-and-ggtheme" class="level3">
-<h3 class="anchored" data-anchor-id="combine-patchwork-and-ggtheme">Combine patchwork and ggtheme</h3>
+<section id="combine-patchwork-and-ggtheme" class="level2">
+<h2 class="anchored" data-anchor-id="combine-patchwork-and-ggtheme">Combine patchwork and ggtheme</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>patchwork <span class="ot">&lt;-</span> (p1 <span class="sc">/</span> p2) <span class="sc">|</span> p3</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>patchwork <span class="sc">&amp;</span> <span class="fu">theme_economist</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -548,7 +554,6 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </div>
-</section>
 </section>
 </section>
 <section id="further-self-practice" class="level1">

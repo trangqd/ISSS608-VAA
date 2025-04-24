@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "ISSS608 Visual Analytics and Applications",
     "section": "",
-    "text": "ISSS608 Visual Analytics and Applications"
+    "text": "Welcome to my portfolio for ISSS608 Visual Analytics and Applications at SMU!."
   },
   {
     "objectID": "index.html#about-me",
@@ -186,7 +186,7 @@
     "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#solution-ggrepel",
     "title": "Hands-on_Ex02",
     "section": "Solution: ggrepel",
-    "text": "Solution: ggrepel\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  geom_label_repel(aes(label = ID), \n                   fontface = \"bold\") +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: ggrepel: 317 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\n#Beyond ggplot2 Themes ##ggplot2 built-in themes\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  theme_gray() +\n  ggtitle(\"Distribution of Maths scores\")"
+    "text": "Solution: ggrepel\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  geom_label_repel(aes(label = ID), \n                   fontface = \"bold\") +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: ggrepel: 317 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#hrbthems-package-additional-themes-theme-components-and-utilities-for-ggplot2",
@@ -257,5 +257,47 @@
     "title": "Hands-on_Ex02",
     "section": "4. Raincloud plot: Score Distribution by Subject (Malay Students)",
     "text": "4. Raincloud plot: Score Distribution by Subject (Malay Students)\n\nlibrary(dplyr)\n\nmalay_data &lt;- exam_data %&gt;%\n  filter(RACE == \"Malay\")\n\nlibrary(tidyr)\n\nmalay_long &lt;- malay_data %&gt;%\n  pivot_longer(\n    cols = c(ENGLISH, MATHS, SCIENCE),\n    names_to = \"Subject\",\n    values_to = \"Score\"\n  )\n\nlibrary(ggplot2)\nlibrary(ggdist)\n\nggplot(malay_long, aes(x = Score, y = Subject, fill = Subject, color = Subject)) +\n  ggdist::stat_halfeye(\n    adjust = 0.6,\n    width = 0.7,\n    .width = 0,\n    justification = -0.2,\n    point_color = NA,\n    alpha = 0.5\n  ) +\n  geom_boxplot(\n    width = 0.15,\n    outlier.shape = NA,\n    alpha = 0.7,\n    position = position_nudge(x = 0.15)\n  ) +\n  geom_jitter(\n    width = 0.12,\n    size = 1.6,\n    alpha = 0.5\n  ) +\n  labs(\n    title = \"Raincloud Plot: Scores by Subject (Malay Students)\",\n    x = \"Score\",\n    y = \"Subject\"\n  ) +\n  scale_fill_brewer(palette = \"Set2\") +\n  scale_color_brewer(palette = \"Set2\") +\n  theme_clean()"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#create-individual-graph",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#create-individual-graph",
+    "title": "Hands-on_Ex02",
+    "section": "Create individual graph",
+    "text": "Create individual graph\n\np1 &lt;- ggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") + \n  coord_cartesian(xlim=c(0,100)) +\n  ggtitle(\"Distribution of Maths scores\")\n\n\np2 &lt;- ggplot(data=exam_data, \n             aes(x = ENGLISH)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  coord_cartesian(xlim=c(0,100)) +\n  ggtitle(\"Distribution of English scores\")\n\n\np3 &lt;- ggplot(data=exam_data, \n             aes(x= MATHS, \n                 y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combine-two-ggplot2-graphs",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combine-two-ggplot2-graphs",
+    "title": "Hands-on_Ex02",
+    "section": "Combine two ggplot2 graphs",
+    "text": "Combine two ggplot2 graphs\n\np1 + p2"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combine-three-ggplot2-graphs",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combine-three-ggplot2-graphs",
+    "title": "Hands-on_Ex02",
+    "section": "Combine three ggplot2 graphs",
+    "text": "Combine three ggplot2 graphs\n\n“/” operator to stack two ggplot2 graphs\n“|” operator to place the plots beside each other\n“()” operator the define the sequence of the plotting\n\n\n(p1 / p2) | p3\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#create-a-composite-figure-with-tag",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#create-a-composite-figure-with-tag",
+    "title": "Hands-on_Ex02",
+    "section": "Create a composite figure with tag",
+    "text": "Create a composite figure with tag\n\n((p1 / p2) | p3) + \n  plot_annotation(tag_levels = 'I')\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#create-figure-with-insert",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#create-figure-with-insert",
+    "title": "Hands-on_Ex02",
+    "section": "Create figure with insert",
+    "text": "Create figure with insert\n\nPlace one or several plots or graphic elements freely on top or below another plot.\n\n\np3 + inset_element(p2, \n                   left = 0.02, \n                   bottom = 0.7, \n                   right = 0.5, \n                   top = 1)\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combine-patchwork-and-ggtheme",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#combine-patchwork-and-ggtheme",
+    "title": "Hands-on_Ex02",
+    "section": "Combine patchwork and ggtheme",
+    "text": "Combine patchwork and ggtheme\n\npatchwork &lt;- (p1 / p2) | p3\npatchwork & theme_economist()\n\n`geom_smooth()` using formula = 'y ~ x'"
   }
 ]
