@@ -17,7 +17,7 @@ website:
 format:
   html:
     theme:
-      - sandstone
+      - cosmo
       - brand
     css: styles.css
     toc: true
