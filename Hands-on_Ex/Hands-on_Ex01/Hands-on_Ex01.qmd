@@ -1,6 +1,11 @@
 ---
 title: "Hands-on Exercise 1"
 author: "Quynh Trang Do"
+date: "19 April, 2024"
+date-modified: "last-modified"
+format:
+  html:
+    theme: cosmo
 ---
 
 # Getting started
