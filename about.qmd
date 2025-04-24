@@ -2,8 +2,6 @@
 title: "About"
 ---
 
-About this site
+This website showcases my coursework from the Visual Analytics and Applications module during my Master’s program at Singapore Management University.
 
-```{r}
-1 + 1
-```
+[You can view the source code and materials on  my  GitHub repository.](https://github.com/trangqd/ISSS608-VAA.git)
