@@ -203,7 +203,7 @@ patchwork & theme_economist()
 
 # Further self-practice
 
-## 1. Boxplot: English Score Distribution by Class
+## 1. Boxplot: Science Score Distribution by Class
 
 ```{r}
 median_data <- exam_data %>%
@@ -225,7 +225,7 @@ p1
 
 ```
 
-## 2. Dot Plot: English Score Distribution by Race
+## 2. Dot Plot: Science Score Distribution by Race
 
 ```{r}
 p2 <- ggplot(exam_data, aes(x = RACE, y = SCIENCE, fill = RACE)) +

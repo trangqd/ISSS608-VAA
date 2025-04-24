@@ -194,8 +194,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#further-self-practice" id="toc-further-self-practice" class="nav-link" data-scroll-target="#further-self-practice">Further self-practice</a>
   <ul class="collapse">
-  <li><a href="#boxplot-english-score-distribution-by-class" id="toc-boxplot-english-score-distribution-by-class" class="nav-link" data-scroll-target="#boxplot-english-score-distribution-by-class">1. Boxplot: English Score Distribution by Class</a></li>
-  <li><a href="#dot-plot-english-score-distribution-by-race" id="toc-dot-plot-english-score-distribution-by-race" class="nav-link" data-scroll-target="#dot-plot-english-score-distribution-by-race">2. Dot Plot: English Score Distribution by Race</a></li>
+  <li><a href="#boxplot-science-score-distribution-by-class" id="toc-boxplot-science-score-distribution-by-class" class="nav-link" data-scroll-target="#boxplot-science-score-distribution-by-class">1. Boxplot: Science Score Distribution by Class</a></li>
+  <li><a href="#dot-plot-science-score-distribution-by-race" id="toc-dot-plot-science-score-distribution-by-race" class="nav-link" data-scroll-target="#dot-plot-science-score-distribution-by-race">2. Dot Plot: Science Score Distribution by Race</a></li>
   <li><a href="#pie-chart-race-proportion-within-each-class" id="toc-pie-chart-race-proportion-within-each-class" class="nav-link" data-scroll-target="#pie-chart-race-proportion-within-each-class">3. Pie Chart: Race proportion within each Class</a></li>
   <li><a href="#raincloud-plot-score-distribution-by-subject-malay-students" id="toc-raincloud-plot-score-distribution-by-subject-malay-students" class="nav-link" data-scroll-target="#raincloud-plot-score-distribution-by-subject-malay-students">4. Raincloud plot: Score Distribution by Subject (Malay Students)</a></li>
   </ul></li>
@@ -554,8 +554,8 @@ increasing max.overlaps</code></pre>
 </section>
 <section id="further-self-practice" class="level1">
 <h1>Further self-practice</h1>
-<section id="boxplot-english-score-distribution-by-class" class="level2">
-<h2 class="anchored" data-anchor-id="boxplot-english-score-distribution-by-class">1. Boxplot: English Score Distribution by Class</h2>
+<section id="boxplot-science-score-distribution-by-class" class="level2">
+<h2 class="anchored" data-anchor-id="boxplot-science-score-distribution-by-class">1. Boxplot: Science Score Distribution by Class</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>median_data <span class="ot">&lt;-</span> exam_data <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(CLASS) <span class="sc">%&gt;%</span></span>
@@ -582,8 +582,8 @@ increasing max.overlaps</code></pre>
 </div>
 </div>
 </section>
-<section id="dot-plot-english-score-distribution-by-race" class="level2">
-<h2 class="anchored" data-anchor-id="dot-plot-english-score-distribution-by-race">2. Dot Plot: English Score Distribution by Race</h2>
+<section id="dot-plot-science-score-distribution-by-race" class="level2">
+<h2 class="anchored" data-anchor-id="dot-plot-science-score-distribution-by-race">2. Dot Plot: Science Score Distribution by Race</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(exam_data, <span class="fu">aes</span>(<span class="at">x =</span> RACE, <span class="at">y =</span> SCIENCE, <span class="at">fill =</span> RACE)) <span class="sc">+</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(</span>

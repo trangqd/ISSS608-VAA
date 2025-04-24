@@ -313,5 +313,19 @@
     "title": "Hands-on_Ex02",
     "section": "Combine multiple ggplot2 graphs",
     "text": "Combine multiple ggplot2 graphs\n\n“/” operator to stack two ggplot2 graphs\n“|” operator to place the plots beside each other\n“()” operator the define the sequence of the plotting\n\n\n(p1 / p2) | p3\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#boxplot-science-score-distribution-by-class",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#boxplot-science-score-distribution-by-class",
+    "title": "Hands-on_Ex02",
+    "section": "1. Boxplot: Science Score Distribution by Class",
+    "text": "1. Boxplot: Science Score Distribution by Class\n\nmedian_data &lt;- exam_data %&gt;%\n  group_by(CLASS) %&gt;%\n  summarise(median_science = median(SCIENCE, na.rm = TRUE))\n\np1 &lt;- ggplot(exam_data, aes(x = CLASS, y = SCIENCE)) +\n  geom_boxplot(outlier.shape = 16, outlier.size = 1.2, width = 0.7, position = position_dodge(0.8)) +\n  scale_fill_brewer(palette = \"Set2\") +\n  geom_text_repel(data = median_data, \n                  aes(x = CLASS, y = median_science, label = round(median_science, 1)),\n                   fontface = \"bold\",\n                   size = 3,\n                   nudge_y = 0.5) +  # Nudge to avoid overlap\n  theme_solarized_2() +\n  labs(title = \"Boxplot: Science Score by Class\", x = \"Class\", y = \"Science Score\")\n\np1"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#dot-plot-science-score-distribution-by-race",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#dot-plot-science-score-distribution-by-race",
+    "title": "Hands-on_Ex02",
+    "section": "2. Dot Plot: Science Score Distribution by Race",
+    "text": "2. Dot Plot: Science Score Distribution by Race\n\np2 &lt;- ggplot(exam_data, aes(x = RACE, y = SCIENCE, fill = RACE)) +\n  geom_dotplot(\n    binaxis = 'y',\n    stackdir = 'center',\n    dotsize = 0.7,\n    binwidth = 2,         # Try 1 or 2 based on your data's spread\n    method = 'dotdensity'\n  ) +\n  labs(\n    title = \"Dot Plot: Science Score by Race\",\n    x = \"Race\",\n    y = \"Science Score\"\n  ) +\n  scale_fill_brewer(palette = \"Set1\") +\n  theme_clean() +\n  theme(\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 12),\n    axis.text.y = element_text(size = 11),\n    plot.title = element_text(size = 15, face = \"bold\", hjust = 0.5),\n    legend.position = \"none\"   # Remove legend since color matches x-axis\n  )\n\np2"
   }
 ]
