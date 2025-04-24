@@ -135,6 +135,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html">
  <span class="dropdown-text">Hands-on Exercise 1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html">
+ <span class="dropdown-text">Hands-on Exercise 2</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -167,6 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#installing-and-launching-r-packages" id="toc-installing-and-launching-r-packages" class="nav-link" data-scroll-target="#installing-and-launching-r-packages">Installing and launching R packages</a></li>
   <li><a href="#importing-the-data" id="toc-importing-the-data" class="nav-link" data-scroll-target="#importing-the-data">Importing the data</a></li>
+  </ul></li>
   <li><a href="#geometric-objects" id="toc-geometric-objects" class="nav-link" data-scroll-target="#geometric-objects">Geometric objects</a>
   <ul class="collapse">
   <li><a href="#plotting-a-simple-bar-chart" id="toc-plotting-a-simple-bar-chart" class="nav-link" data-scroll-target="#plotting-a-simple-bar-chart">Plotting a simple bar chart</a></li>
@@ -195,7 +200,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#change-y--and-x-axis-range" id="toc-change-y--and-x-axis-range" class="nav-link" data-scroll-target="#change-y--and-x-axis-range">Change y- and x-axis range</a></li>
   </ul></li>
   <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -264,10 +268,11 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="geometric-objects" class="level2">
-<h2 class="anchored" data-anchor-id="geometric-objects">Geometric objects</h2>
-<section id="plotting-a-simple-bar-chart" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-a-simple-bar-chart">Plotting a simple bar chart</h3>
+</section>
+<section id="geometric-objects" class="level1">
+<h1>Geometric objects</h1>
+<section id="plotting-a-simple-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-a-simple-bar-chart">Plotting a simple bar chart</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> exam_data,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>RACE)) <span class="sc">+</span></span>
@@ -281,8 +286,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="plotting-a-dot-plot" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-a-dot-plot">Plotting a dot plot</h3>
+<section id="plotting-a-dot-plot" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-a-dot-plot">Plotting a dot plot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -316,8 +321,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="plotting-a-histogram" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-a-histogram">Plotting a histogram</h3>
+<section id="plotting-a-histogram" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-a-histogram">Plotting a histogram</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -364,8 +369,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="plotting-kernel-density-estimate" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-kernel-density-estimate">Plotting kernel density estimate</h3>
+<section id="plotting-kernel-density-estimate" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-kernel-density-estimate">Plotting kernel density estimate</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> MATHS)) <span class="sc">+</span></span>
@@ -392,8 +397,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="plotting-a-boxplot" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-a-boxplot">Plotting a boxplot</h3>
+<section id="plotting-a-boxplot" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-a-boxplot">Plotting a boxplot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> MATHS,       </span>
@@ -408,8 +413,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="plotting-a-notched-plot" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-a-notched-plot">Plotting a notched plot</h3>
+<section id="plotting-a-notched-plot" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-a-notched-plot">Plotting a notched plot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> MATHS, </span>
@@ -424,8 +429,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="plotting-a-violin-plot" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-a-violin-plot">Plotting a violin plot</h3>
+<section id="plotting-a-violin-plot" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-a-violin-plot">Plotting a violin plot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> MATHS, </span>
@@ -440,8 +445,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="plotting-a-scatterplot" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-a-scatterplot">Plotting a scatterplot</h3>
+<section id="plotting-a-scatterplot" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-a-scatterplot">Plotting a scatterplot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span> MATHS, </span>
@@ -456,8 +461,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="combined-plot" class="level3">
-<h3 class="anchored" data-anchor-id="combined-plot">Combined plot</h3>
+<section id="combined-plot" class="level2">
+<h2 class="anchored" data-anchor-id="combined-plot">Combined plot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> MATHS, </span>
@@ -475,10 +480,10 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </section>
 </section>
-<section id="statistics-function" class="level2">
-<h2 class="anchored" data-anchor-id="statistics-function">Statistics function</h2>
-<section id="add-mean-value" class="level3">
-<h3 class="anchored" data-anchor-id="add-mean-value">Add mean value</h3>
+<section id="statistics-function" class="level1">
+<h1>Statistics function</h1>
+<section id="add-mean-value" class="level2">
+<h2 class="anchored" data-anchor-id="add-mean-value">Add mean value</h2>
 <p><em>stat_summary( ) method</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
@@ -514,8 +519,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="add-best-fit-curve" class="level3">
-<h3 class="anchored" data-anchor-id="add-best-fit-curve">Add best fit curve</h3>
+<section id="add-best-fit-curve" class="level2">
+<h2 class="anchored" data-anchor-id="add-best-fit-curve">Add best fit curve</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span> MATHS, <span class="at">y=</span>ENGLISH)) <span class="sc">+</span></span>
@@ -556,10 +561,10 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </section>
 </section>
-<section id="facets" class="level2">
-<h2 class="anchored" data-anchor-id="facets">Facets</h2>
-<section id="facet_wrap-method" class="level3">
-<h3 class="anchored" data-anchor-id="facet_wrap-method">facet_wrap method</h3>
+<section id="facets" class="level1">
+<h1>Facets</h1>
+<section id="facet_wrap-method" class="level2">
+<h2 class="anchored" data-anchor-id="facet_wrap-method">facet_wrap method</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span> MATHS)) <span class="sc">+</span></span>
@@ -574,8 +579,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="facet_grid-method" class="level3">
-<h3 class="anchored" data-anchor-id="facet_grid-method">facet_grid method</h3>
+<section id="facet_grid-method" class="level2">
+<h2 class="anchored" data-anchor-id="facet_grid-method">facet_grid method</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span> MATHS)) <span class="sc">+</span></span>
@@ -591,10 +596,10 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </section>
 </section>
-<section id="coordinates" class="level2">
-<h2 class="anchored" data-anchor-id="coordinates">Coordinates</h2>
-<section id="flip-horizontal-bar-chart-into-vertical-bar-chart" class="level3">
-<h3 class="anchored" data-anchor-id="flip-horizontal-bar-chart-into-vertical-bar-chart">Flip horizontal bar chart into vertical bar chart</h3>
+<section id="coordinates" class="level1">
+<h1>Coordinates</h1>
+<section id="flip-horizontal-bar-chart-into-vertical-bar-chart" class="level2">
+<h2 class="anchored" data-anchor-id="flip-horizontal-bar-chart-into-vertical-bar-chart">Flip horizontal bar chart into vertical bar chart</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>RACE)) <span class="sc">+</span></span>
@@ -609,8 +614,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </div>
 </section>
-<section id="change-y--and-x-axis-range" class="level3">
-<h3 class="anchored" data-anchor-id="change-y--and-x-axis-range">Change y- and x-axis range</h3>
+<section id="change-y--and-x-axis-range" class="level2">
+<h2 class="anchored" data-anchor-id="change-y--and-x-axis-range">Change y- and x-axis range</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span> MATHS, <span class="at">y=</span>ENGLISH)) <span class="sc">+</span></span>
@@ -632,8 +637,8 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 </section>
 </section>
-<section id="themes" class="level2">
-<h2 class="anchored" data-anchor-id="themes">Themes</h2>
+<section id="themes" class="level1">
+<h1>Themes</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>RACE)) <span class="sc">+</span></span>
@@ -664,7 +669,6 @@ dbl (3): ENGLISH, MATHS, SCIENCE
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

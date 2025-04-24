@@ -24,9 +24,9 @@ pacman::p_load(tidyverse)
 exam_data <- read_csv("data/Exam_data.csv")
 ```
 
-## Geometric objects
+# Geometric objects
 
-### Plotting a simple bar chart
+## Plotting a simple bar chart
 
 ```{r}
 ggplot(data = exam_data,
@@ -34,7 +34,7 @@ ggplot(data = exam_data,
   geom_bar()
 ```
 
-### Plotting a dot plot
+## Plotting a dot plot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -53,7 +53,7 @@ ggplot(data=exam_data,
                      breaks = NULL)  
 ```
 
-### Plotting a histogram
+## Plotting a histogram
 
 ```{r}
 ggplot(data=exam_data, 
@@ -81,7 +81,7 @@ ggplot(data=exam_data,
                  color="grey30")
 ```
 
-### Plotting kernel density estimate
+## Plotting kernel density estimate
 
 ```{r}
 ggplot(data=exam_data, 
@@ -96,7 +96,7 @@ ggplot(data=exam_data,
   geom_density()
 ```
 
-### Plotting a boxplot
+## Plotting a boxplot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -105,7 +105,7 @@ ggplot(data=exam_data,
   geom_boxplot()            
 ```
 
-### Plotting a notched plot
+## Plotting a notched plot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -114,7 +114,7 @@ ggplot(data=exam_data,
   geom_boxplot(notch=TRUE)
 ```
 
-### Plotting a violin plot
+## Plotting a violin plot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -123,7 +123,7 @@ ggplot(data=exam_data,
   geom_violin()
 ```
 
-### Plotting a scatterplot
+## Plotting a scatterplot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -132,7 +132,7 @@ ggplot(data=exam_data,
   geom_point()            
 ```
 
-### Combined plot
+## Combined plot
 
 ```{r}
 ggplot(data=exam_data, 
@@ -143,9 +143,9 @@ ggplot(data=exam_data,
              size = 0.5)        
 ```
 
-## Statistics function
+# Statistics function
 
-### Add mean value
+## Add mean value
 
 *stat_summary( ) method*
 
@@ -171,7 +171,7 @@ ggplot(data=exam_data,
              size=4)          
 ```
 
-### Add best fit curve
+## Add best fit curve
 
 ```{r}
 ggplot(data=exam_data, 
@@ -189,9 +189,9 @@ ggplot(data=exam_data,
               linewidth=0.5)
 ```
 
-## Facets
+# Facets
 
-### facet_wrap method
+## facet_wrap method
 
 ```{r}
 ggplot(data=exam_data, 
@@ -200,7 +200,7 @@ ggplot(data=exam_data,
     facet_wrap(~ CLASS)
 ```
 
-### facet_grid method
+## facet_grid method
 
 ```{r}
 ggplot(data=exam_data, 
@@ -209,9 +209,9 @@ ggplot(data=exam_data,
     facet_grid(~ CLASS)
 ```
 
-## Coordinates
+# Coordinates
 
-### Flip horizontal bar chart into vertical bar chart
+## Flip horizontal bar chart into vertical bar chart
 
 ```{r}
 ggplot(data=exam_data, 
@@ -220,7 +220,7 @@ ggplot(data=exam_data,
   coord_flip()
 ```
 
-### Change y- and x-axis range
+## Change y- and x-axis range
 
 ```{r}
 ggplot(data=exam_data, 
@@ -232,7 +232,7 @@ ggplot(data=exam_data,
                   ylim=c(0,100))
 ```
 
-## Themes
+# Themes
 
 ```{r}
 ggplot(data=exam_data, 

@@ -1,0 +1,7 @@
+---
+title: "Hands-on_Ex02"
+author: "Quynh Trang Do"
+date: "24 April, 2025"
+date-modified: "last-modified"
+format: html
+---
