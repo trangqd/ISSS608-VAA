@@ -1,7 +1,7 @@
 ---
 title: "Hands-on Exercise 03"
 description: "" 
-date: "April 26, 2024"
+date: "May 1, 2025"
 date-modified: "last-modified"
 format: html
 editor: visual
@@ -92,8 +92,9 @@ girafe(
 )                                        
 ```
 
-`
+
 ### Displaying statistics on tooltip
+
 ```{r}
 tooltip <- function(y, ymax, accuracy = .01) {
   mean <- scales::number(y, accuracy = accuracy)
