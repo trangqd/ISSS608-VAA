@@ -1,6 +1,5 @@
 ---
 title: "Take-home Exercise 1 (Part 1)"
-author: "Quynh Trang Do"
 date: "May 1, 2025"
 date-modified: "last-modified"
 format:
@@ -851,3 +850,13 @@ ggplot(lollipop_feats, aes(
 -   Only a handful of planning areas have sex ratios above 1.0, indicating more males than females: Sungei Kadut has the highest ratio, significantly above 1.1, suggesting it may host male-dominated populations. Changi and Woodlands also have slightly higher male-to-female ratios, which could be influenced by military facilities, and industrial zones.
 :::
 
+# Summary and Conclusion
+
+
+This report provides a multi-dimensional analysis of Singapore’s population using visualizations that examine distribution, age composition, dependency ratios, and sex ratios across regions and planning areas. The first set of visualizations reveals that while regions like the Central, North-East, and West have similar total populations, the Central region has significantly more planning areas and subzones, reflecting greater urban complexity and a more fragmented distribution. In some regions, certain planning areas such as Sengkang, Tampines, and Jurong West hold disproportionately large shares of the total populations, creating concentrated pressure on infrastructure and services.
+
+The second visualization highlights demographic variation in age structure and dependency burden. The Central region has a notably higher proportion of elderly residents, while the North-East and West are younger. Areas like Outram and Bukit Merah face high dependency ratios, signaling greater economic pressure on the working-age population, whereas others like Seletar and Downtown Core show minimal dependency due to low residential or aging populations.
+
+Lastly, the third visualization shows that most planning areas have balanced or female-skewed sex ratios, with only a few—such as Sungei Kadut and Changi—exhibiting a male-dominant population, likely linked to industrial or institutional functions.
+
+Together, these insights highlight the demographic diversity across Singapore and underscore the need for region-specific urban planning and policy interventions.
