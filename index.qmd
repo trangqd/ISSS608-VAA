@@ -28,6 +28,7 @@ Hi, I'm Quynh Trang Do. I'm a Master's student in Data Science & Analytics, pass
 
 | Project | Description |
 |------------------------------------|------------------------------------|
-| [Take-home Ex01](https://isss608-ay2425-qtd.netlify.app/take-home_ex/take-home_ex01/take-home_ex01) | Singapore Demographic Analysis |
-| [Hands-on Ex03](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex03/hands-on_ex03) | Programming Interactive Data Visualisation & Animated Statistical Graphics with R |
+| [Take-home Ex01 (Part 1)](https://isss608-ay2425-qtd.netlify.app/take-home_ex/take-home_ex01/take-home_ex01) | Singapore Demographic Analysis |
+| [Take-home Ex01 (Part 2)](https://isss608-ay2425-qtd.netlify.app/take-home_ex/take-home_ex01/take-home_ex01_p2) | Visualization critic and makeover |
+| [Hands-on Ex04](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex04/hands-on_ex04) | Visualising Distribution, Statistical Analysis, Uncertainty & Funnel Plots |
 :::
