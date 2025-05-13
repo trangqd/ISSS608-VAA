@@ -1,0 +1,13 @@
+---
+title: "Hands-on_Ex05"
+author: "Quynh Trang Do"
+date: "May 13, 2025"
+date-modified: "last-modified"
+format: docx
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
