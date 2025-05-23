@@ -1,0 +1,152 @@
+---
+title: "In-class Excercise 5: MC1 Preparation"
+date: "May 17, 2025"
+date-modified: "last-modified"
+format: html
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# Load packages
+
+```{r}
+pacman::p_load(tidyverse, jsonlite, SmartEDA,
+                 tidygraph, ggraph)
+```
+
+# Import data
+
+```{r}
+kg <- fromJSON("data/MC1_graph.json")
+```
+
+## Inspect structure
+
+```{r}
+str(kg, max.level=1)
+```
+
+## Extract and inspect
+
+```{r}
+nodes_tbl <- as_tibble(kg$nodes)
+edges_tbl <- as_tibble(kg$links)
+```
+
+# Initial EDA
+
+```{r}
+ggplot(data = edges_tbl,
+       aes(y=`Edge Type`)) + 
+  geom_bar()
+
+```
+
+```{r}
+ggplot(data = nodes_tbl,
+       aes(y=`Node Type`)) + 
+  geom_bar()
+
+```
+
+# Create knowledge graph
+
+## Step 1: Mapping from node id to row index
+
+```{r}
+id_map <- tibble(id = nodes_tbl$id,
+                 index = seq_len(nrow(nodes_tbl)))
+```
+
+## Step 2: Map source and target IDs to row indices
+
+```{r}
+edges_tbl <- edges_tbl %>%
+  left_join(id_map, by = c("source" = "id")) %>%
+  rename(from = index) %>%
+  left_join(id_map, by = c("target" = "id")) %>%
+  rename(to = index)
+```
+
+## Step 3: Filter out any unmatched (invalid) edges
+
+```{r}
+edges_tbl <- edges_tbl %>%
+  filter(!is.na(from), !is.na(to))
+```
+
+## Step 4: Create the graph
+
+```{r}
+graph <- tbl_graph(nodes = nodes_tbl,
+                   edges = edges_tbl,
+                   directed = kg$directed)
+```
+
+## Visualize the knowledge graph
+
+```{r}
+set.seed(1234)
+```
+
+## Visualize the whole graph
+
+```{r}
+#| eval: false
+ggraph(graph, layout="fr") +
+  geom_edge_link(alpha=0.3, 
+                 colour = "gray") +
+  geom_node_point(aes(color = `Node Type`), size = 4) +
+  geom_node_text(aes(label=name),
+                 repel=TRUE,
+                 size = 2.5) +
+  theme_void()
+```
+
+## Visualize subset
+
+### Step 1: filter edges to only "Memberof"
+
+```{r}
+graph_memberof <- graph %>%
+  activate(edges) %>%
+  filter(`Edge Type` == "MemberOf")
+```
+
+### Step 2: Extract only connected nodes
+
+```{r}
+used_node_indices <- graph_memberof %>%
+  activate(edges) %>%
+  as_tibble() %>%
+  select(from, to) %>%
+  unlist() %>%
+  unique()
+```
+
+### Step 3: Keep only those nodes
+
+```{r}
+graph_memberof <- graph_memberof %>%
+  activate(nodes) %>%
+  mutate(row_id = row_number()) %>%
+  filter(row_id %in% used_node_indices) %>%
+  select(-row_id) 
+```
+
+### Plot the sub-graph
+
+```{r}
+ggraph(graph_memberof, layout = "fr") +
+  geom_edge_link(alpha = 0.5, 
+                 colour = "gray") +
+  geom_node_point(aes(color = `Node Type`), size = 1) +
+  geom_node_text(aes(label=name),
+                 repel=TRUE,
+                 size = 2.5) +
+  theme_void()
+```
