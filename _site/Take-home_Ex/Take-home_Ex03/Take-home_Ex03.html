@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Quynh Trang Do">
+<meta name="dcterms.date" content="2025-06-06">
+
+<title>Take-home Exercise 3 – ISSS608-VAA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-53f539a478d6ecd1be31ce9fd30fd81c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ISSS608-VAA</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hands-on-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Hands-on Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html">
+ <span class="dropdown-text">Hands-on Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html">
+ <span class="dropdown-text">Hands-on Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html">
+ <span class="dropdown-text">Hands-on Exercise 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04.html">
+ <span class="dropdown-text">Hands-on Exercise 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05.html">
+ <span class="dropdown-text">Hands-on Exercise 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex06/Hands-on_Ex06.html">
+ <span class="dropdown-text">Hands-on Exercise 6</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">In-class Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../VAST/MC1.html">
+ <span class="dropdown-text">In-class Exercise 5</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Take-home Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html">
+ <span class="dropdown-text">Take-home Exercise 1 (Part 1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex01/Take-home_Ex01_P2.html">
+ <span class="dropdown-text">Take-home Exercise 1 (Part 2)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html">
+ <span class="dropdown-text">Take-home Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html">
+ <span class="dropdown-text">Take-home Exercise 3</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#section-1-temporal-analysis" id="toc-section-1-temporal-analysis" class="nav-link" data-scroll-target="#section-1-temporal-analysis">Section 1: Temporal Analysis</a></li>
+  <li><a href="#section-2-network-analysis" id="toc-section-2-network-analysis" class="nav-link" data-scroll-target="#section-2-network-analysis">Section 2: Network Analysis</a>
+  <ul class="collapse">
+  <li><a href="#relationship-network" id="toc-relationship-network" class="nav-link" data-scroll-target="#relationship-network">Relationship Network</a></li>
+  <li><a href="#communication-network" id="toc-communication-network" class="nav-link" data-scroll-target="#communication-network">Communication Network</a></li>
+  </ul></li>
+  <li><a href="#section-3-behavioral-analysis" id="toc-section-3-behavioral-analysis" class="nav-link" data-scroll-target="#section-3-behavioral-analysis">Section 3: Behavioral Analysis</a></li>
+  <li><a href="#shiny-app-pseudocode" id="toc-shiny-app-pseudocode" class="nav-link" data-scroll-target="#shiny-app-pseudocode">Shiny App Pseudocode</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Take-home Exercise 3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Quynh Trang Do </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 6, 2025</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 11, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>This exercise presents the storyboard for my group’s Shiny application, with a focus on UI design, layout, and interactive components. Our project addresses three questions (1, 2 and 4) from <a href="https://vast-challenge.github.io/2025/MC3.html">Mini-Challenge 3</a> of the <a href="https://vast-challenge.github.io/2025/index.html">VAST Challenge 2025</a>. Accordingly, the Shiny application is structured into three main sections:</p>
+<ol type="1">
+<li><p>Temporal Analysis – to explore communication patterns over the period.</p></li>
+<li><p>Network Analysis – to visualize relationships and communication interactions among entities.</p></li>
+<li><p>Behavioral Analysis – to examine the ego network and activity timeline of a selected entity based on user input, uncovering signs of illegal involvement.</p></li>
+</ol>
+</section>
+<section id="section-1-temporal-analysis" class="level1">
+<h1>Section 1: Temporal Analysis</h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">UI Design</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Summary</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Details</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Storyboard UI Design/Slide1.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>This section is designed to help users explore and understand communication patterns over the time period. At the top, six value boxes display summary statistics, including total days, total messages, average messages per day, peak hour, most active day, and total active entities. On the left panel, users can interact with a date range picker, an hour range slider, and an entity selector to filter the data. The main display area on the right presents various charts: a line chart showing daily message volume, a heatmap of hourly message counts, density plots illustrating hourly activity patterns, a bar chart comparing message volume by entity, and a boxplot showing daily message distribution across entities. This layout allows users to gain both a high-level overview and detailed insights into temporal communication behavior.</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 26%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Total days</td>
+<td style="text-align: left;">Value box</td>
+<td style="text-align: left;">Displays the number of unique days in the selected date range.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total messages</td>
+<td style="text-align: left;">Value box</td>
+<td style="text-align: left;">Shows the total number of messages sent during the selected period.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Average number of messages/day</td>
+<td style="text-align: left;">Value box</td>
+<td style="text-align: left;">Calculates the average daily message count over the selected time window.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Peak hour</td>
+<td style="text-align: left;">Value box</td>
+<td style="text-align: left;">Identifies the hour of the day with the highest message volume.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Most active day</td>
+<td style="text-align: left;">Value box</td>
+<td style="text-align: left;">Highlights the single day within the selected period that has the greatest number of messages.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total active entities</td>
+<td style="text-align: left;">Value box</td>
+<td style="text-align: left;">Indicates the number of unique entities that sent or received messages within the selected period.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Date range picker</td>
+<td style="text-align: left;">User input</td>
+<td style="text-align: left;">Allows users to define the time window for analysis.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hour range slider</td>
+<td style="text-align: left;">User input</td>
+<td style="text-align: left;">Filters the analysis by specific hours of the day (e.g., 0–24).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Entity selector</td>
+<td style="text-align: left;">User input</td>
+<td style="text-align: left;">Enables selection of one or more entities to focus the analysis on specific participants.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total messages per day</td>
+<td style="text-align: left;">Line chart</td>
+<td style="text-align: left;">Visualizes daily message volume over time, with a dashed line for the average.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hourly message count</td>
+<td style="text-align: left;">Heatmap</td>
+<td style="text-align: left;">Shows message frequency by hour and day, helping detect temporal peaks.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hourly message density</td>
+<td style="text-align: left;">Density plots</td>
+<td style="text-align: left;">Illustrates the distribution of messages across hours for each day using ridge or density plots.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total messages by entity</td>
+<td style="text-align: left;">Bar chart</td>
+<td style="text-align: left;">Compares the total number of messages sent by each entity.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Daily message distribution by entity</td>
+<td style="text-align: left;">Box plot</td>
+<td style="text-align: left;">Displays the variation in daily message counts for each entity, identifying patterns or outliers.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="section-2-network-analysis" class="level1">
+<h1>Section 2: Network Analysis</h1>
+<p>This section offers an interactive environment to explore entity relationships and communication structures within the dataset. Users can toggle between two network types, <strong>Relationship</strong> and <strong>Communication</strong>, via tab selection.</p>
+<section id="relationship-network" class="level2">
+<h2 class="anchored" data-anchor-id="relationship-network">Relationship Network</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Node-centric view</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Edge-centric view</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Summary</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Details</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Storyboard UI Design/Slide2.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Storyboard UI Design/Slide3.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>The Relationship Network view enables users to explore how entities such as people, organizations, groups, and vessels are connected through defined relationship types (e.g., “Reports”, “Operates”). Users can filter the network by selecting sub-types of entities and control graph complexity by adjusting the communication frequency slider or toggling the option to show all connected nodes. The main visualization displays a network graph where nodes represent entities and edges represent relationships. Hovering over a node reveals its identity and connections. On the right, a clustering result graph groups related entities into clusters based on network topology, with cluster colors and node size reflecting attributes like sub-type, cluster ID, and degree. Below, a dynamic node table presents centrality metrics (degree, betweenness, closeness, eigenvector) for selected entities, while the edge table displays direct relationship ties (e.g., who reports to whom), providing both structural and contextual insights into the network.</p>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Component</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entity Type Selector</td>
+<td>Checkbox Input</td>
+<td>Allows users to select one or more entity sub-types (e.g., Person, Organization, Group, Vessel) to include in the relationship graph.</td>
+</tr>
+<tr class="even">
+<td>Connection Frequency Filter</td>
+<td>Slider Input</td>
+<td>Filters out edges (relationships) based on a selected threshold of frequency.</td>
+</tr>
+<tr class="odd">
+<td>Clustering Method Selector</td>
+<td>Dropdown Input</td>
+<td>Allows users to select a specific clustering algorithm to group structurally similar entities.</td>
+</tr>
+<tr class="even">
+<td>Show All Connected Nodes</td>
+<td>Checkbox Input</td>
+<td>Option to include all nodes regardless of the communication frequency.</td>
+</tr>
+<tr class="odd">
+<td>Relationship Network Graph</td>
+<td>Network Visualization</td>
+<td>Interactive visualization showing entities as nodes and relationships (e.g., Reports, Operates) as edges. Hover to reveal node details.</td>
+</tr>
+<tr class="even">
+<td>Clustering Result Graph</td>
+<td>Network Visualization</td>
+<td>Color-coded graph showing communities of entities based on their structural proximity. Node size represents centrality (e.g., degree).</td>
+</tr>
+<tr class="odd">
+<td>Node Table</td>
+<td>Data Table</td>
+<td>Displays centrality measures (degree, betweenness, closeness, eigenvector) for selected entities, helping identify key players in the network.</td>
+</tr>
+<tr class="even">
+<td>Edge Table</td>
+<td>Data Table</td>
+<td>Lists direct relationships between entities, including relationship type and participating nodes for interpretability and traceability.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="communication-network" class="level2">
+<h2 class="anchored" data-anchor-id="communication-network">Communication Network</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Node-centric view</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Edge-centric view</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Summary</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">Details</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Storyboard UI Design/Slide4.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Storyboard UI Design/Slide5.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p>The Communication Network mode focuses on actual message exchanges between entities. Similar to the relationship view, users can filter by entity sub-type, set thresholds for communication frequency, and choose a clustering method. The communication graph in the center illustrates how frequently different entities interact, with edge thickness reflecting the number of communication events. The adjacent clustering result graph shows communities formed based on communication behavior, helping to identify tightly connected groups. Entities are colored by cluster, sized by degree, and marked by sub-type for easy interpretation. At the bottom, the node table lists each entity’s centrality measures to identify influential communicators, while the edge table summarizes entity-to-entity communication frequencies, offering granular insight into who is talking to whom and how often.</p>
+</div>
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Component</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Entity Type Selector</td>
+<td>Checkbox Input</td>
+<td>Allows users to select one or more entity sub-types (e.g., Person, Organization, Group, Vessel) to include in the relationship graph.</td>
+</tr>
+<tr class="even">
+<td>Connection Frequency Filter</td>
+<td>Slider Input</td>
+<td>Filters out edges (relationships) based on a selected threshold of frequency.</td>
+</tr>
+<tr class="odd">
+<td>Clustering Method Selector</td>
+<td>Dropdown Input</td>
+<td>Allows users to select a specific clustering algorithm to group structurally similar entities.</td>
+</tr>
+<tr class="even">
+<td>Show All Connected Nodes</td>
+<td>Checkbox Input</td>
+<td>Option to include all nodes regardless of the communication frequency.</td>
+</tr>
+<tr class="odd">
+<td>Communication Network Graph</td>
+<td>Network Visualization</td>
+<td>Interactive graph where nodes represent entities and edge thickness reflects communication frequency. Hover reveals node information.</td>
+</tr>
+<tr class="even">
+<td>Clustering Result Graph</td>
+<td>Network Visualization</td>
+<td>Visual grouping of entities into clusters based on communication behavior. Nodes are sized by degree and colored by cluster.</td>
+</tr>
+<tr class="odd">
+<td>Node Table</td>
+<td>Data Table</td>
+<td>Lists centrality metrics (degree, betweenness, closeness, eigenvector) for each entity to identify key communicators.</td>
+</tr>
+<tr class="even">
+<td>Edge Table</td>
+<td>Data Table</td>
+<td>Displays pairwise communication frequencies between entities, showing who interacts with whom and how often.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-3-behavioral-analysis" class="level1">
+<h1>Section 3: Behavioral Analysis</h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">UI Design</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Summary</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Details</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Storyboard UI Design/Slide6.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>This section enables in-depth investigation of a specific entity’s behavior, interactions, and activities over time. Users begin by selecting an entity of interest, a preferred graph layout, and a date range. The main interface then updates to show three coordinated views:</p>
+<ol type="1">
+<li><p>An <strong>interactive ego network</strong> showing direct relationships between the selected entity and others, categorized by entity type (e.g., person, vessel, organization).</p></li>
+<li><p>A <strong>dynamic event log table</strong> listing all associated entities, their types, number of interactions, and the last interaction date.</p></li>
+<li><p>An <strong>interactive activity timeline</strong> that visualizes events (e.g., communication, bribery, coordination) involving the selected entity across the chosen date range.</p></li>
+</ol>
+<p>This section supports behavioral profiling, surfacing anomalies, and potentially flagging suspicious or illegal interactions through temporal and structural context.</p>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Component</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Select Entity</td>
+<td>Dropdown Input</td>
+<td>Allows users to choose a specific entity (e.g., person, vessel) for detailed behavioral exploration.</td>
+</tr>
+<tr class="even">
+<td>Select Graph Layout</td>
+<td>Dropdown Input</td>
+<td>Provides layout options (e.g., Force-directed, Circular) to change the arrangement of nodes in the ego network.</td>
+</tr>
+<tr class="odd">
+<td>Select Date Range</td>
+<td>Date Range Picker</td>
+<td>Filters all visualizations and tables based on the specified activity window.</td>
+</tr>
+<tr class="even">
+<td>Ego Network Visualization</td>
+<td>Network Graph</td>
+<td>Shows a focused view of the selected entity’s direct relationships with other entities, color-coded by type.</td>
+</tr>
+<tr class="odd">
+<td>Event Log Table</td>
+<td>Data Table</td>
+<td>Lists interacting entities, their types, number of shared events, and the last interaction date.</td>
+</tr>
+<tr class="even">
+<td>Activity Timeline</td>
+<td>Scatter Plot / Timeline</td>
+<td>Plots event types involving the selected entity across time, helping identify suspicious patterns or irregular activities.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="shiny-app-pseudocode" class="level1">
+<h1>Shiny App Pseudocode</h1>
+<p>The following pseudocode outlines the architecture of our Shiny application, which is designed to support visual analytics across three sections mentioned above.</p>
+<ul>
+<li><p>The <strong>UI</strong> is structured as a multi-tab layout, with each tab corresponding to a specific analysis module.</p></li>
+<li><p>The <strong>server logic</strong> handles data filtering, network computations, centrality calculations, and dynamic rendering of visualizations and tables.</p></li>
+</ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">UI Layout</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Server Logic</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(<span class="st">"Project Name"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Temporal Analysis</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">"Temporal Analysis"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sidebarPanel</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dateRangeInput</span>(<span class="st">"date_range"</span>, <span class="st">"Date range"</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sliderInput</span>(<span class="st">"hour_range"</span>, <span class="st">"Hour range"</span>, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span><span class="dv">24</span>, <span class="at">value=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">24</span>)),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">selectInput</span>(<span class="st">"entity_select"</span>, <span class="st">"Select entity"</span>, <span class="at">choices =</span> entity_list, <span class="at">multiple=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mainPanel</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fluidRow</span>( <span class="co"># Top metrics</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>          <span class="fu">valueBoxOutput</span>(<span class="st">"total_days"</span>),</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>          <span class="fu">valueBoxOutput</span>(<span class="st">"total_messages"</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>          <span class="fu">valueBoxOutput</span>(<span class="st">"avg_msg_day"</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>          <span class="fu">valueBoxOutput</span>(<span class="st">"peak_hour"</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>          <span class="fu">valueBoxOutput</span>(<span class="st">"most_active_day"</span>),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">valueBoxOutput</span>(<span class="st">"total_entities"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fluidRow</span>( <span class="co"># Charts</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>          <span class="fu">plotOutput</span>(<span class="st">"line_daily_msg"</span>),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>          <span class="fu">plotOutput</span>(<span class="st">"heat_hourly_msg"</span>),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>          <span class="fu">plotOutput</span>(<span class="st">"density_hourly_msg"</span>),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>          <span class="fu">plotOutput</span>(<span class="st">"bar_total_entity"</span>),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>          <span class="fu">plotOutput</span>(<span class="st">"boxplot_entity_daily"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2. Network Analysis</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">"Network Analysis"</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sidebarPanel</span>(</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">radioButtons</span>(<span class="st">"network_type"</span>, <span class="st">"Plot"</span>, <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Relationship"</span>, <span class="st">"Communication"</span>)),</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">checkboxGroupInput</span>(<span class="st">"entity_type"</span>, <span class="st">"Select Sub-type"</span>, <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Person"</span>, <span class="st">"Organization"</span>, <span class="st">"Group"</span>, <span class="st">"Vessel"</span>)),</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sliderInput</span>(<span class="st">"comm_freq"</span>, <span class="st">"Communication Frequency"</span>, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span><span class="dv">100</span>, <span class="at">value=</span><span class="dv">0</span>),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">checkboxInput</span>(<span class="st">"show_connected"</span>, <span class="st">"Show all connected nodes"</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">selectInput</span>(<span class="st">"clustering_method"</span>, <span class="st">"Select Clustering Method"</span>, <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"Louvain"</span>, <span class="st">"Walktrap"</span>, <span class="st">"Label Propagation"</span>))</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mainPanel</span>(</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fluidRow</span>(</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>          <span class="fu">visNetworkOutput</span>(<span class="st">"main_network"</span>),</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>          <span class="fu">visNetworkOutput</span>(<span class="st">"cluster_network"</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">tabsetPanel</span>(</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>          <span class="fu">tabPanel</span>(<span class="st">"Nodes"</span>, <span class="fu">DTOutput</span>(<span class="st">"node_table"</span>)),</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>          <span class="fu">tabPanel</span>(<span class="st">"Edges"</span>, <span class="fu">DTOutput</span>(<span class="st">"edge_table"</span>))</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Behavioral Analysis</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">"Behavioral Analysis"</span>,</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fluidPage</span>(</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>      <span class="fu">fluidRow</span>(</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>        <span class="fu">selectInput</span>(<span class="st">"selected_entity"</span>, <span class="st">"Select Entity"</span>, <span class="at">choices =</span> entity_list),</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>        <span class="fu">selectInput</span>(<span class="st">"layout_type"</span>, <span class="st">"Select Graph Layout"</span>, <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"FR"</span>, <span class="st">"Circle"</span>, <span class="st">"Grid"</span>)),</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dateRangeInput</span>(<span class="st">"behavior_date"</span>, <span class="st">"Select Date Range"</span>)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>      <span class="fu">fluidRow</span>(</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        <span class="fu">column</span>(<span class="dv">4</span>, <span class="fu">visNetworkOutput</span>(<span class="st">"ego_network"</span>)),</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="fu">column</span>(<span class="dv">4</span>, <span class="fu">DTOutput</span>(<span class="st">"event_log"</span>)),</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>        <span class="fu">column</span>(<span class="dv">4</span>, <span class="fu">plotOutput</span>(<span class="st">"activity_timeline"</span>))</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 1. Temporal Analysis</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  filtered_data <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter_messages_by_date_hour_entity</span>(input<span class="sc">$</span>date_range, input<span class="sc">$</span>hour_range, input<span class="sc">$</span>entity_select)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>total_days <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({ <span class="fu">count_unique_days</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>total_messages <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({ <span class="fu">count_messages</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>avg_msg_day <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({ <span class="fu">avg_messages_per_day</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>peak_hour <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({ <span class="fu">find_peak_hour</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>most_active_day <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({ <span class="fu">find_most_active_day</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>total_entities <span class="ot">&lt;-</span> <span class="fu">renderValueBox</span>({ <span class="fu">count_active_entities</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>line_daily_msg <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ <span class="fu">plot_messages_per_day</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>heat_hourly_msg <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ <span class="fu">plot_hourly_heatmap</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>density_hourly_msg <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ <span class="fu">plot_hourly_density</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>bar_total_entity <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ <span class="fu">plot_total_messages_by_entity</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>boxplot_entity_daily <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({ <span class="fu">plot_boxplot_entity_daily</span>(<span class="fu">filtered_data</span>()) })</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 2. Network Analysis</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  filtered_graph <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter_network_by_type_and_threshold</span>(input<span class="sc">$</span>network_type, input<span class="sc">$</span>entity_type, input<span class="sc">$</span>comm_freq)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>main_network <span class="ot">&lt;-</span> <span class="fu">renderVisNetwork</span>({</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot_network_graph</span>(<span class="fu">filtered_graph</span>(), <span class="at">show_connected =</span> input<span class="sc">$</span>show_connected)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>cluster_network <span class="ot">&lt;-</span> <span class="fu">renderVisNetwork</span>({</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cluster_graph</span>(<span class="fu">filtered_graph</span>(), <span class="at">method =</span> input<span class="sc">$</span>clustering_method)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>node_table <span class="ot">&lt;-</span> <span class="fu">renderDT</span>({</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">compute_node_centralities</span>(<span class="fu">filtered_graph</span>())</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>edge_table <span class="ot">&lt;-</span> <span class="fu">renderDT</span>({</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list_entity_relationships</span>(<span class="fu">filtered_graph</span>())</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="do">## 3. Behavioral Analysis</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  ego_graph <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_ego_network</span>(input<span class="sc">$</span>selected_entity, input<span class="sc">$</span>behavior_date)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>ego_network <span class="ot">&lt;-</span> <span class="fu">renderVisNetwork</span>({</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot_ego_graph</span>(<span class="fu">ego_graph</span>(), <span class="at">layout =</span> input<span class="sc">$</span>layout_type)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>event_log <span class="ot">&lt;-</span> <span class="fu">renderDT</span>({</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_event_log_for_entity</span>(input<span class="sc">$</span>selected_entity, input<span class="sc">$</span>behavior_date)</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>activity_timeline <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot_entity_activity_timeline</span>(input<span class="sc">$</span>selected_entity, input<span class="sc">$</span>behavior_date)</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

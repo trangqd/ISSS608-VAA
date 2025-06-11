@@ -369,7 +369,6 @@ visNetwork(vis_nodes, vis_edges) %>%
   )
 ```
 
-
 To identify key individuals within the communication network, I compute four standard network centrality metrics for all Person nodes:
 
 -   **Degree centrality**: Measures the number of direct connections a node has, indicating activity level.
