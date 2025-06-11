@@ -1,0 +1,613 @@
+---
+title: "Take-home Exercise 3"
+author: "Quynh Trang Do"
+date: "June 6, 2025"
+date-modified: "last-modified"
+format: html
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# Load packages
+```{r}
+pacman::p_load(tidyverse, jsonlite, dplyr, igraph,
+               tidygraph, ggraph, scales, visNetwork,
+               SmartEDA, widyr, ggforce, tidytext)
+```
+
+# Import data
+
+```{r}
+MC3 <- fromJSON("data/MC3_graph.json")
+MC3_schema <- fromJSON("data/MC3_schema.json")
+```
+
+**Quick check on the imported data**
+
+```{r}
+glimpse(MC3)
+```
+
+**Extract the node and edge tables**
+
+```{r}
+mc3_nodes <- as_tibble(MC3$nodes)
+mc3_edges <- as_tibble(MC3$edges)
+```
+
+# Data Cleaning and Wrangling
+
+## For nodes
+
+The code chunk below is used to convert values in id field into character data type, exclude records with ID value are NA, exclude records with similar ID values, exclude thing_collected field, and save the cleaned tibble dataframe into a new tibble datatable called mc3_nodes_cleaned.
+
+```{r}
+mc3_nodes_cleaned <- mc3_nodes %>%
+  mutate(id = as.character(id)) %>%
+  filter(!is.na(id)) %>%
+  distinct(id, .keep_all = TRUE) %>%
+  select(-thing_collected)
+```
+
+## For edges
+
+The code chunk below is used to rename source and target fields to from_id and to_id respectively, convert values in from_id and to_id fields to character data type, exclude values in from_id and to_id which not found in the id field of mc3_nodes_cleaned, exclude records whereby from_id and/or to_id values are missing, and save the cleaned tibble dataframe and called it mc3_edges_cleaned.
+
+```{r}
+mc3_edges_cleaned <- mc3_edges %>%
+  rename(from_id = source, 
+         to_id = target) %>%
+  mutate(across(c(from_id, to_id), 
+                as.character)) %>%
+  filter(from_id %in% mc3_nodes_cleaned$id, 
+         to_id %in% mc3_nodes_cleaned$id) %>%
+  filter(!is.na(from_id), !is.na(to_id))
+```
+
+Next, create mapping of character id in mc3_nodes_cleaned to row index.
+
+```{r}
+node_index_lookup <- mc3_nodes_cleaned %>%
+  mutate(.row_id = row_number()) %>%
+  select(id, .row_id)
+```
+
+Next, join and convert from_id and to_id to integer indices. At the same time, drop rows with unmatched nodes.
+
+```{r}
+mc3_edges_indexed <- mc3_edges_cleaned %>%
+  left_join(node_index_lookup, 
+            by = c("from_id" = "id")) %>%
+  rename(from = .row_id) %>%
+  left_join(node_index_lookup, 
+            by = c("to_id" = "id")) %>%
+  rename(to = .row_id) %>%
+  select(from, to, is_inferred, type) %>%
+  filter(!is.na(from) & !is.na(to))  
+```
+
+Next, subset nodes to only those referenced by edges.
+
+```{r}
+used_node_indices <- sort(
+  unique(c(mc3_edges_indexed$from, 
+           mc3_edges_indexed$to)))
+
+mc3_nodes_final <- mc3_nodes_cleaned %>%
+  slice(used_node_indices) %>%
+  mutate(new_index = row_number())
+```
+
+Then, rebuild lookup from old index to new index.
+
+```{r}
+old_to_new_index <- tibble(
+  old_index = used_node_indices,
+  new_index = seq_along(
+    used_node_indices))
+```
+
+Finally, update edge indices to match new node table.
+```{r}
+mc3_edges_final <- mc3_edges_indexed %>%
+  left_join(old_to_new_index, 
+            by = c("from" = "old_index")) %>%
+  rename(from_new = new_index) %>%
+  left_join(old_to_new_index, 
+            by = c("to" = "old_index")) %>%
+  rename(to_new = new_index) %>%
+  select(from = from_new, to = to_new, 
+         is_inferred, type)
+```
+
+
+```{r}
+subtype_map <- c(Coordinates = "Operational",
+  AccessPermission = "Operational",
+  Operates = "Operational",
+  Jurisdiction = "Operational",
+  Reports = "Operational",
+  Colleagues = "Affiliates",
+  Friends = "Affiliates",
+  Unfriendly = "Unfriendly",
+  Suspicious = "Suspicious"
+)
+
+undirected_types <- c("Friends", "Colleagues")
+
+# ─────────────────────────────────────────────────────────────
+# 1. Filter nodes
+# ─────────────────────────────────────────────────────────────
+event_ids <- mc3_nodes_final %>% filter(type == "Event") %>% pull(new_index)
+location_ids <- mc3_nodes_final %>% filter(sub_type == "Location") %>% pull(new_index)
+blocked_ids <- c(event_ids, location_ids)
+
+node_lookup <- mc3_nodes_final %>% 
+  filter(!new_index %in% blocked_ids) %>% 
+  select(new_index, type, sub_type, label)
+
+# ─────────────────────────────────────────────────────────────
+# 2. Relationship nodes (no color use)
+# ─────────────────────────────────────────────────────────────
+rel_nodes <- node_lookup %>%
+  filter(type == "Relationship") %>%
+  mutate(
+    rel_subtype = sub_type,
+    big_group = ifelse(rel_subtype %in% names(subtype_map),
+                       subtype_map[rel_subtype],
+                       rel_subtype),
+    rel_id = as.character(new_index)
+  ) %>%
+  select(rel_id, rel_subtype, big_group)
+
+rel_ids <- rel_nodes$rel_id
+nondir_rel_ids <- rel_nodes %>% filter(rel_subtype %in% undirected_types) %>% pull(rel_id)
+
+# ─────────────────────────────────────────────────────────────
+# 3. All edges
+# ─────────────────────────────────────────────────────────────
+edges_all <- mc3_edges_final %>% 
+  filter(from %in% node_lookup$new_index | to %in% node_lookup$new_index) %>%
+  filter(!from %in% blocked_ids, !to %in% blocked_ids) %>%
+  mutate(across(c(from, to), as.character))
+
+undir_edges <- edges_all %>% 
+  filter(to %in% nondir_rel_ids) %>% 
+  transmute(from = to, to = from, direction = "undirected")
+
+edges_all <- bind_rows(
+  edges_all %>% mutate(direction = "directed"),
+  undir_edges
+)
+
+# ─────────────────────────────────────────────────────────────
+# 4. Entity–Relationship table
+# ─────────────────────────────────────────────────────────────
+entity_rel_tbl <- edges_all %>%
+  filter(from %in% rel_ids | to %in% rel_ids) %>%
+  mutate(
+    rel_id = if_else(from %in% rel_ids, from, to),
+    entity = if_else(from %in% rel_ids, to, from)
+  ) %>%
+  select(rel_id, entity)
+
+# ─────────────────────────────────────────────────────────────
+# 5. Create and de-duplicate triplets
+# ─────────────────────────────────────────────────────────────
+triplets <- entity_rel_tbl %>%
+  left_join(rel_nodes, by = "rel_id") %>%
+  group_by(rel_id) %>%
+  filter(n_distinct(entity) == 2) %>%
+  summarise(
+    entities = list(sort(unique(entity))),
+    rel_subtype = first(rel_subtype),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    e1 = map_chr(entities, ~.x[1]),
+    e2 = map_chr(entities, ~.x[2])
+  ) %>%
+  mutate(pair_id = paste(pmin(e1, e2), pmax(e1, e2), sep = "_")) %>%
+  arrange(pair_id, rel_subtype, rel_id) %>%
+  group_by(pair_id) %>%
+  slice(1) %>%
+  ungroup()
+
+# ─────────────────────────────────────────────────────────────
+# 6. Rebuild edge list
+# ─────────────────────────────────────────────────────────────
+edges_all <- triplets %>% 
+  mutate(rel_type = if_else(rel_subtype %in% undirected_types, "undirected", "directed")) %>% 
+  pivot_longer(c(e1, e2), names_to = "end", values_to = "entity") %>% 
+  transmute(
+    from = if_else(end == "e1", entity, rel_id),
+    to = if_else(end == "e1", rel_id, entity),
+    direction = rel_type
+  ) %>% 
+  distinct()
+
+# ─────────────────────────────────────────────────────────────
+# 7. Node table
+# ─────────────────────────────────────────────────────────────
+used_ids <- unique(c(edges_all$from, edges_all$to))
+
+nodes_tbl <- mc3_nodes_final %>% 
+  filter(new_index %in% used_ids) %>% 
+  mutate(
+    vis_type = case_when(
+      type == "Relationship" ~ "Relationship",
+      sub_type == "Person" ~ "Person",
+      sub_type == "Organization" ~ "Organization",
+      sub_type == "Vessel" ~ "Vessel", 
+      sub_type == "Group" ~ "Group",
+      TRUE ~ "Other"
+    ),
+    new_index = as.character(new_index)
+  ) %>%
+  left_join(rel_nodes %>% select(node_id = rel_id, big_group), 
+            by = c("new_index" = "node_id")) %>%
+  mutate(
+    label = if_else(vis_type == "Relationship", big_group, label)
+  ) %>%
+  select(node_id = new_index, label, vis_type) %>%
+  mutate(row_id = row_number())
+
+# ─────────────────────────────────────────────────────────────
+# 8. Format for visNetwork
+# ─────────────────────────────────────────────────────────────
+id_map <- nodes_tbl %>% select(node_id, row_id)
+
+vis_edges <- edges_all %>% 
+  left_join(id_map, by = c("from" = "node_id")) %>% rename(.from = row_id) %>% 
+  left_join(id_map, by = c("to" = "node_id")) %>% rename(.to = row_id) %>% 
+  transmute(
+    from = .from, 
+    to = .to,
+    arrows = ifelse(direction == "undirected", "", "to"),
+    color = "grey"
+  )
+
+# ─────────────────────────────────────────────────────────────
+# 9. Colors and shapes (only by vis_type)
+# ─────────────────────────────────────────────────────────────
+palette <- c(
+  Person = "orange",
+  Organization = "red",
+  Vessel = "forestgreen",
+  Group = "orchid",
+  Relationship = "skyblue"
+)
+
+shapes <- c(
+  Person = "dot",
+  Organization = "diamond", 
+  Vessel = "triangle",
+  Group = "star",
+  Relationship = "box"
+)
+
+# ─────────────────────────────────────────────────────────────
+# 10. Build vis_nodes table
+# ─────────────────────────────────────────────────────────────
+vis_nodes <- nodes_tbl %>%
+  left_join(rel_nodes %>% rename(node_id = rel_id), by = "node_id") %>%
+  mutate(
+    group = vis_type,
+    shape = shapes[vis_type],
+    color = palette[vis_type],
+    title = if_else(vis_type == "Relationship", rel_subtype, NA_character_)  # Tooltip for rel
+  ) %>%
+  transmute(
+    id = row_id,
+    label = if_else(group == "Relationship", big_group, label),
+    group = group,
+    shape = shape,
+    color = color,
+    title = title
+  )
+
+# ─────────────────────────────────────────────────────────────
+# 11. Final visNetwork graph
+# ─────────────────────────────────────────────────────────────
+visNetwork(vis_nodes, vis_edges, width = "100%", height = "800px") %>% 
+  visNodes(font = list(size = 18)) %>% 
+  visEdges(smooth = FALSE) %>% 
+  visOptions(
+    highlightNearest = list(enabled = TRUE, degree = 2, hover = TRUE),
+    nodesIdSelection = list(
+      enabled = TRUE,
+      values = vis_nodes %>% filter(!group %in% c("Relationship", "Other")) %>% pull(id)
+    )
+  ) %>% 
+  visLegend(
+    addNodes = data.frame(
+      label = names(palette),
+      shape = shapes[names(palette)],
+      color = palette[names(palette)]
+    ),
+    useGroups = FALSE,
+    position = "right"
+  ) %>% 
+  visLayout(randomSeed = 42)
+```
+
+```{r}
+library(dplyr)
+library(visNetwork)
+library(RColorBrewer)
+
+# Choose clustering method
+clustering_method <- "louvain"  # options: "louvain" or "label_prop"
+
+# Make sure IDs are character
+vis_nodes <- vis_nodes %>% mutate(id = as.character(id))
+vis_edges <- vis_edges %>% mutate(from = as.character(from), to = as.character(to))
+
+# Build igraph object
+g <- graph_from_data_frame(d = vis_edges, vertices = vis_nodes, directed = TRUE)
+g_undirected <- as.undirected(g, mode = "collapse")
+
+# Apply clustering
+clusters <- switch(
+  clustering_method,
+  louvain     = cluster_louvain(g_undirected),
+  label_prop  = cluster_label_prop(g_undirected),
+  stop("Unsupported clustering method")
+)
+
+# Cluster membership (ensure id matches vis_nodes$id)
+membership_df <- data.frame(
+  id = names(membership(clusters)),
+  cluster_id = membership(clusters),
+  stringsAsFactors = FALSE
+)
+
+# Join and add color/group
+n_clusters <- length(unique(membership_df$cluster_id))
+color_palette <- RColorBrewer::brewer.pal(max(3, min(8, n_clusters)), "Set2")
+
+vis_nodes_clustered <- vis_nodes %>%
+  left_join(membership_df, by = "id") %>%
+  mutate(
+    group = paste0("Cluster ", cluster_id),
+    color = color_palette[as.numeric(factor(cluster_id))],
+    shape = shape  # preserve original shape if present
+  )
+
+# Draw graph
+visNetwork(vis_nodes_clustered, vis_edges, width = "100%", height = "800px") %>% 
+  visNodes(font = list(size = 18)) %>%
+  visEdges(smooth = FALSE) %>%
+  visOptions(
+    highlightNearest = list(enabled = TRUE, degree = 2, hover = TRUE),
+    nodesIdSelection = TRUE
+  ) %>%
+  visLegend(useGroups = TRUE, position = "right") %>%
+  visLayout(randomSeed = 42)
+```
+
+```{r}
+V(g_undirected)$name <- vis_nodes$id
+
+# Compute centrality measures
+centrality_df <- data.frame(
+  id = V(g_undirected)$name,
+  degree = degree(g_undirected),
+  betweenness = betweenness(g_undirected, normalized = TRUE),
+  closeness = closeness(g_undirected, normalized = TRUE),
+  eigenvector = eigen_centrality(g_undirected)$vector,
+  stringsAsFactors = FALSE
+)
+
+# Merge with vis_nodes to get name and sub-type
+vis_nodes_clean <- nodes_tbl %>% 
+  select(id = row_id, label, sub_type = vis_type)
+
+centrality_df <- centrality_df %>% mutate(id = as.character(id))
+vis_nodes_clean <- vis_nodes_clean %>% mutate(id = as.character(id))
+membership_df <- membership_df %>% mutate(id = as.character(id))
+
+
+centrality_table <- centrality_df %>%
+  left_join(vis_nodes_clean %>% select(id, Name = label, `Sub-type` = sub_type), by = "id") %>%
+  left_join(membership_df, by = "id") %>%
+  select(Name, `Sub-type`, Cluster = cluster_id,
+         `Degree centrality` = degree,
+         `Betweenness centrality` = betweenness,
+         `Closeness centrality` = closeness,
+         `Eigenvector centrality` = eigenvector) %>%
+  mutate(across(where(is.numeric), ~ round(.x, 2)))
+
+
+# round numeric metrics
+centrality_table <- centrality_table %>%
+  mutate(across(where(is.numeric), ~ round(.x, 2)))
+
+print(centrality_table)
+```
+
+```{r}
+# Build Communication tables
+valid_entity_types <- c("Person", "Organization", "Vessel", "Group")
+
+node_lookup <- mc3_nodes_final %>% select(new_index, sub_type, name)
+edges_labeled <- mc3_edges_final %>%
+  left_join(node_lookup, by = c("from" = "new_index")) %>%
+  rename(from_type = sub_type, from_name = name) %>%
+  left_join(node_lookup, by = c("to" = "new_index")) %>%
+  rename(to_type = sub_type, to_name = name)
+
+entity_comm <- edges_labeled %>%
+  filter(
+    (from_type %in% valid_entity_types & to_type == "Communication") |
+    (to_type %in% valid_entity_types & from_type == "Communication")
+  ) %>%
+  transmute(
+    entity = if_else(from_type %in% valid_entity_types, from_name, to_name),
+    comm   = if_else(from_type %in% valid_entity_types, to, from),
+    type   = if_else(from_type %in% valid_entity_types, from_type, to_type)
+  )
+
+# Pairwise co-occurrences
+edges_raw <- entity_comm %>%
+  inner_join(entity_comm, by = "comm", suffix = c("_a", "_b")) %>%
+  filter(entity_a != entity_b) %>%
+  mutate(pair_id = map2_chr(entity_a, entity_b, ~ paste(sort(c(.x, .y)), collapse = "||"))) %>%
+  count(pair_id, entity_a, entity_b, name = "weight")
+
+# Node table
+nodes_tbl <- entity_comm %>%
+  distinct(name = entity, sub_type = type) %>%
+  mutate(row_id = row_number())
+
+# Edge table
+id_lkp <- nodes_tbl %>% select(name, row_id)
+edges_final <- edges_raw %>%
+  left_join(id_lkp, by = c("entity_a" = "name")) %>% rename(from = row_id) %>%
+  left_join(id_lkp, by = c("entity_b" = "name")) %>% rename(to = row_id) %>%
+  select(from, to, weight)
+
+full_graph <- tbl_graph(nodes = nodes_tbl, edges = edges_final, directed = FALSE) %>%
+  mutate(
+    degree      = centrality_degree(),
+    betweenness = centrality_betweenness(),
+    closeness   = centrality_closeness(),
+    eigen       = centrality_eigen()
+  )
+
+# Visualize
+vis_nodes <- full_graph %>%
+  as_tibble() %>%
+  mutate(
+    id = row_number(),
+    label = name,
+    value = scales::rescale(degree, to = c(5, 25)),  # Size by degree
+    group = sub_type,
+    color = case_when(
+    sub_type == "Person"       ~ "orange",
+    sub_type == "Vessel"       ~ "forestgreen",
+    sub_type == "Organization" ~ "pink",
+    sub_type == "Group"        ~ "blue",
+    TRUE ~ "lightgray"
+    ),
+    shape = case_when(
+    sub_type == "Person"       ~ "dot",
+    sub_type == "Vessel"       ~ "triangle",
+    sub_type == "Organization" ~ "box",
+    sub_type == "Group"        ~ "star",
+    TRUE ~ "ellipse"
+    ),
+    title = paste0(
+      "<b>", name, "</b><br>",
+      "Degree: ", degree, "<br>",
+      "Betweenness: ", round(betweenness, 2), "<br>",
+      "Closeness: ", round(closeness, 3), "<br>",
+      "Eigenvector: ", round(eigen, 3)
+    )
+  ) %>%
+  select(id, label, group, shape, color, value, title)
+
+vis_edges <- edges_final %>%
+  mutate(arrows = "none", color = "gray") %>%
+  distinct()
+
+visNetwork(vis_nodes, vis_edges) %>%
+  visNodes(font = list(size = 16)) %>%
+  visEdges(smooth = FALSE) %>%
+  visOptions(
+    highlightNearest = list(enabled = TRUE, degree = 1, hover = TRUE),
+    nodesIdSelection = TRUE
+  ) %>%
+  visLayout(randomSeed = 42) %>%
+  visLegend(addNodes = data.frame(
+  label = c("Person", "Vessel", "Organization", "Group"),
+  shape = c("dot", "triangle", "box", "star"),
+  color = c("orange", "forestgreen", "pink", "blue")
+), useGroups = FALSE, position = "right")
+```
+
+```{r}
+# Step 1: Convert to igraph
+g_igraph <- igraph::graph_from_data_frame(
+  d = vis_edges %>% select(from, to),
+  vertices = vis_nodes %>% select(id, label),
+  directed = FALSE
+)
+
+# Step 2: Apply clustering
+clustering_method <- "label_prop"  # options: "louvain", "label_prop"
+
+clusters <- switch(
+  clustering_method,
+  louvain     = cluster_louvain(g_igraph),
+  label_prop  = cluster_label_prop(g_igraph),
+  stop("Unsupported clustering method")
+)
+
+membership_df <- data.frame(
+  id = names(membership(clusters)),
+  cluster_id = membership(clusters),
+  stringsAsFactors = FALSE
+)
+
+# Step 3: Merge with vis_nodes and color by cluster
+n_clusters <- length(unique(membership_df$cluster_id))
+palette <- RColorBrewer::brewer.pal(max(3, min(8, n_clusters)), "Set2")
+
+vis_nodes_clustered <- vis_nodes %>%
+  mutate(id = as.character(id)) %>%
+  left_join(membership_df, by = "id") %>%
+  mutate(
+    group = paste0("Cluster ", cluster_id),
+    color = palette[as.numeric(factor(cluster_id))]
+  )
+
+# Optional legend
+legend_data <- vis_nodes_clustered %>%
+  distinct(group, color) %>%
+  mutate(label = group, shape = "dot") %>%
+  select(label, shape, color)
+
+# Step 4: Visualize with clustering
+visNetwork(vis_nodes_clustered, vis_edges) %>%
+  visNodes(font = list(size = 16)) %>%
+  visEdges(smooth = FALSE) %>%
+  visOptions(
+    highlightNearest = list(enabled = TRUE, degree = 1, hover = TRUE),
+    nodesIdSelection = TRUE
+  ) %>%
+  visLegend(
+    addNodes = legend_data,
+    useGroups = FALSE,
+    position = "right"
+  ) %>%
+  visLayout(randomSeed = 42)
+```
+
+```{r}
+# Add cluster membership from igraph back into tbl_graph
+cluster_membership <- membership(clusters)
+
+summary_tbl <- full_graph %>%
+  mutate(cluster = cluster_membership) %>%
+  as_tibble() %>%
+  select(
+    name,
+    sub_type,
+    cluster,
+    degree,
+    betweenness,
+    closeness,
+    eigen
+  ) %>%
+  arrange(cluster, desc(degree)) %>%
+  mutate(across(where(is.numeric), ~ round(.x, 3)))  # Round numeric values
+
+print(summary_tbl)
+```
+
+
