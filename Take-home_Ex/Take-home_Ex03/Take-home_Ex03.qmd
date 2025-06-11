@@ -41,7 +41,7 @@ This section is designed to help users explore and understand communication patt
 ## Details
 
 | Component | Type | Description |
-|:--------------------------|:------------------|:--------------------------|
+|:---|:---|:---|
 | Total days | Value box | Displays the number of unique days in the selected date range. |
 | Total messages | Value box | Shows the total number of messages sent during the selected period. |
 | Average number of messages/day | Value box | Calculates the average daily message count over the selected time window. |
@@ -80,7 +80,7 @@ The Relationship Network view enables users to explore how entities such as peop
 ### Details
 
 | **Component** | **Type** | **Description** |
-|-------------------|-------------------|----------------------------------|
+|----|----|----|
 | Entity Type Selector | Checkbox Input | Allows users to select one or more entity sub-types (e.g., Person, Organization, Group, Vessel) to include in the relationship graph. |
 | Connection Frequency Filter | Slider Input | Filters out edges (relationships) based on a selected threshold of frequency. |
 | Clustering Method Selector | Dropdown Input | Allows users to select a specific clustering algorithm to group structurally similar entities. |
@@ -109,7 +109,7 @@ The Communication Network mode focuses on actual message exchanges between entit
 ### Details
 
 | **Component** | **Type** | **Description** |
-|-------------------|-------------------|----------------------------------|
+|----|----|----|
 | Entity Type Selector | Checkbox Input | Allows users to select one or more entity sub-types (e.g., Person, Organization, Group, Vessel) to include in the relationship graph. |
 | Connection Frequency Filter | Slider Input | Filters out edges (relationships) based on a selected threshold of frequency. |
 | Clustering Method Selector | Dropdown Input | Allows users to select a specific clustering algorithm to group structurally similar entities. |
@@ -142,7 +142,7 @@ This section supports behavioral profiling, surfacing anomalies, and potentially
 ## Details
 
 | **Component** | **Type** | **Description** |
-|----------------|----------------|-----------------------------------------|
+|----|----|----|
 | Select Entity | Dropdown Input | Allows users to choose a specific entity (e.g., person, vessel) for detailed behavioral exploration. |
 | Select Graph Layout | Dropdown Input | Provides layout options (e.g., Force-directed, Circular) to change the arrangement of nodes in the ego network. |
 | Select Date Range | Date Range Picker | Filters all visualizations and tables based on the specified activity window. |
