@@ -28,7 +28,9 @@ Hi, I'm Quynh Trang Do. I'm a Master's student in Data Science & Analytics, pass
 
 | Project | Description |
 |------------------------------------|------------------------------------|
-| [Hands-on Ex06](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex06/hands-on_ex06) | Visualising and Analysing Time-oriented Data |
-| [Hands-on Ex05](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex05/hands-on_ex05) | Visualising and Analysing Network Data |
+| [Take-home Exercise 3](https://isss608-ay2425-qtd.netlify.app/take-home_ex/take-home_ex03/take-home_ex03) | Storyboard Design |
+| [Hands-on Exercise 8 (P1)](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex08/hands-on_ex08_p1) | Choropleth Mapping with R |
+| [Hands-on Exercise 8 (P2)](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex08/hands-on_ex08_p2) | Visualising Geospatial Point Data |
+| [Hands-on Exercise 8 (P3)](https://isss608-ay2425-qtd.netlify.app/hands-on_ex/hands-on_ex08/hands-on_ex08_p3) | Analytical mapping |
 
 :::
