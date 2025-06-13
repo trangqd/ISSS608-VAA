@@ -1,0 +1,82 @@
+---
+title: "Hands-on Exercise 8 - Part 2"
+author: "Quynh Trang Do"
+date: "June 12, 2025"
+date-modified: "last-modified"
+format: html
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# Visualising Geospatial Point Data
+## Load necessary packages
+```{r}
+pacman::p_load(sf, tmap, tidyverse)
+```
+
+## Data import and preparation
+```{r}
+sgpools <- read_csv("data/aspatial/SGPools_svy21.csv")
+
+list(sgpools) 
+```
+
+**Convert sgpools data frame into a simple feature data frame by using st_as_sf() of sf packages**
+```{r}
+sgpools_sf <- st_as_sf(sgpools, 
+                       coords = c("XCOORD", "YCOORD"),
+                       crs= 3414)
+
+list(sgpools_sf)
+```
+
+## Drawing Proportional Symbol Map
+
+**Turn on the interactive mode of tmap**
+```{r}
+tmap_mode("view")
+```
+
+### Interactive point symbol map
+```{r}
+tm_shape(sgpools_sf) + 
+  tm_bubbles(fill = "red",
+           size = 1,
+           col = "black",
+           lwd = 1)
+```
+
+
+### Proportional symbol map
+```{r}
+tm_shape(sgpools_sf) + 
+  tm_bubbles(fill = "red",
+             size = "Gp1Gp2 Winnings",
+             col = "black",
+             lwd = 1)
+```
+
+### Change color
+```{r}
+tm_shape(sgpools_sf) + 
+  tm_bubbles(fill = "OUTLET TYPE", 
+             size = "Gp1Gp2 Winnings",
+             col = "black",
+             lwd = 1)
+```
+
+### Faceted plot
+```{r}
+tm_shape(sgpools_sf) + 
+  tm_bubbles(fill = "OUTLET TYPE", 
+             size = "Gp1Gp2 Winnings",
+             col = "black",
+             lwd = 1) + 
+  tm_facets(by= "OUTLET TYPE",
+            nrow = 1,
+            sync = TRUE)
+```
