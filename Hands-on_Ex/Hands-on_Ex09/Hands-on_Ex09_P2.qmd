@@ -14,17 +14,23 @@ execute:
 ---
 
 # Install and launch necessary packages
+
 ```{r}
 pacman::p_load(corrplot, ggstatsplot, tidyverse)
 ```
 
 # Data preparation
+
 ## Import data
+
 ```{r}
 wine <- read_csv("data/wine_quality.csv")
 ```
+
 # Building Correlation Matrix: pairs() method
+
 ## Basic correlation matrix
+
 ```{r}
 pairs(wine[,1:11])
 ```
@@ -33,19 +39,22 @@ pairs(wine[,1:11])
 pairs(wine[,2:12])
 ```
 
-
 ## Draw the lower corner
+
 ### Lower-half
+
 ```{r}
 pairs(wine[,2:12], upper.panel = NULL)
 ```
 
 ### Upper-half
+
 ```{r}
 pairs(wine[,2:12], lower.panel = NULL)
 ```
 
 ## Include correlation coefficients
+
 ```{r}
 panel.cor <- function(x, y, digits=2, prefix="", cex.cor, ...) {
 usr <- par("usr")
@@ -63,7 +72,9 @@ pairs(wine[,2:12],
 ```
 
 # Visualising Correlation Matrix: ggcormat()
+
 ## Basic plot
+
 ```{r, fig.width=10, fig,height=6}
 ggstatsplot::ggcorrmat(
   data = wine, 
@@ -71,6 +82,7 @@ ggstatsplot::ggcorrmat(
 ```
 
 ## Add arguments
+
 ```{r, fig.width=10, fig.height=6}
 ggstatsplot::ggcorrmat(
   data = wine, 
@@ -89,6 +101,7 @@ ggplot.component = list(
 ```
 
 # Build multiple plots
+
 ```{r, fig.height=10, fig.width=15}
 grouped_ggcorrmat(
   data = wine,
@@ -109,26 +122,31 @@ grouped_ggcorrmat(
 )
 ```
 
-
 # Visualising Correlation Matrix using corrplot Package
+
 ## Compute the correlation matrix
+
 ```{r}
 wine.cor <- cor(wine[, 1:11])
 ```
 
 ## Plot
+
 ```{r}
 corrplot(wine.cor)
 ```
 
 ## Visual geometrics
+
 ```{r}
 corrplot(wine.cor, 
          method = "ellipse") 
 ```
 
 ## Layout
+
 ### Layout type: full, upper, or lower
+
 ```{r}
 corrplot(wine.cor, 
          method = "ellipse", 
@@ -136,6 +154,7 @@ corrplot(wine.cor,
 ```
 
 ### Turn off diagonal cells and change axis text label color
+
 ```{r}
 corrplot(wine.cor, 
          method = "ellipse", 
@@ -145,6 +164,7 @@ corrplot(wine.cor,
 ```
 
 ## Mixed layout
+
 ```{r, fig.width=10}
 corrplot.mixed(wine.cor, 
                lower = "ellipse", 
@@ -155,6 +175,7 @@ corrplot.mixed(wine.cor,
 ```
 
 ## Combine corrgram with the significant test
+
 ```{r}
 # Compute p-value and confidence interval for each pair of variables
 wine.sig = cor.mtest(wine.cor, conf.level= .95)
@@ -171,6 +192,7 @@ corrplot(wine.cor,
 ```
 
 ## Reorder a corrgram
+
 ```{r, fig.width=10}
 corrplot.mixed(wine.cor, 
                lower = "ellipse", 
@@ -182,6 +204,7 @@ corrplot.mixed(wine.cor,
 ```
 
 ## Reorder a correlation matrix using hclust
+
 ```{r}
 corrplot(wine.cor, 
          method = "ellipse", 
@@ -191,4 +214,3 @@ corrplot(wine.cor,
          hclust.method = "ward.D",
          addrect = 3)
 ```
-
