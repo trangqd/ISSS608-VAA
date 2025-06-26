@@ -14,18 +14,23 @@ execute:
 ---
 
 # Install and launch necessary packages
+
 ```{r}
 pacman::p_load(treemap, treemapify, tidyverse) 
 ```
 
 # Data Wrangling
+
 ## Import data
+
 ```{r}
 realis2018 <- read_csv("data/realis2018.csv")
 ```
 
 ## Data wrangling
+
 **Grouped summaries without the Pipe**
+
 ```{r}
 realis2018_grouped <- group_by(realis2018, `Project Name`,
                                `Planning Region`, `Planning Area`, 
@@ -38,6 +43,7 @@ realis2018_summarised <- summarise(realis2018_grouped,
 ```
 
 **Grouped summaries with the pipe**
+
 ```{r}
 realis2018_summarised <- realis2018 %>% 
   group_by(`Project Name`,`Planning Region`, 
@@ -50,14 +56,18 @@ realis2018_summarised <- realis2018 %>%
 ```
 
 # Designing Treemap with treemap Package
+
 ## Static treemap
+
 **Select records belongs to resale condominium property type**
+
 ```{r}
 realis2018_selected <- realis2018_summarised %>%
   filter(`Property Type` == "Condominium", `Type of Sale` == "Resale")
 ```
 
 ### Basic arguments
+
 ```{r}
 treemap(realis2018_selected,
         index=c("Planning Region", "Planning Area", "Project Name"),
@@ -69,6 +79,7 @@ treemap(realis2018_selected,
 ```
 
 ### vColor and type arguments
+
 ```{r}
 treemap(realis2018_selected,
         index=c("Planning Region", "Planning Area", "Project Name"),
@@ -81,7 +92,9 @@ treemap(realis2018_selected,
 ```
 
 ### Colours in treemap package
+
 **Value type**
+
 ```{r}
 treemap(realis2018_selected,
         index=c("Planning Region", "Planning Area", "Project Name"),
@@ -95,6 +108,7 @@ treemap(realis2018_selected,
 ```
 
 **Manual type**
+
 ```{r}
 treemap(realis2018_selected,
         index=c("Planning Region", "Planning Area", "Project Name"),
@@ -108,6 +122,7 @@ treemap(realis2018_selected,
 ```
 
 **Less confusing version: use single color palette instead of diverging one**
+
 ```{r}
 treemap(realis2018_selected,
         index=c("Planning Region", "Planning Area", "Project Name"),
@@ -121,7 +136,9 @@ treemap(realis2018_selected,
 ```
 
 ### Treemap layout
+
 **Algorithm argument**
+
 ```{r}
 treemap(realis2018_selected,
         index=c("Planning Region", "Planning Area", "Project Name"),
@@ -136,6 +153,7 @@ treemap(realis2018_selected,
 ```
 
 **Use sortID to dertemine the order in which the rectangles are placed from top left to bottom right.**
+
 ```{r}
 treemap(realis2018_selected,
         index=c("Planning Region", "Planning Area", "Project Name"),
@@ -151,7 +169,9 @@ treemap(realis2018_selected,
 ```
 
 # Designing Treemap using treemapify Package
+
 ## Basic treemap
+
 ```{r}
 ggplot(data=realis2018_selected, 
        aes(area = `Total Unit Sold`,
@@ -163,7 +183,9 @@ ggplot(data=realis2018_selected,
 ```
 
 ## Define hierarchy
+
 **Group by planning region**
+
 ```{r}
 ggplot(data=realis2018_selected, 
        aes(area = `Total Unit Sold`,
@@ -174,6 +196,7 @@ ggplot(data=realis2018_selected,
 ```
 
 **Group by planning area**
+
 ```{r}
 ggplot(data=realis2018_selected, 
        aes(area = `Total Unit Sold`,
@@ -184,6 +207,7 @@ ggplot(data=realis2018_selected,
 ```
 
 **Add boundary line**
+
 ```{r}
 ggplot(data=realis2018_selected, 
        aes(area = `Total Unit Sold`,
@@ -197,27 +221,34 @@ ggplot(data=realis2018_selected,
 ```
 
 # Designing Interactive Treemap using d3treeR
+
 ## Install d3treeR package
-### Install devtools package 
+
+### Install devtools package
+
 ```{r}
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 install.packages("devtools")
 ```
 
 ### Load the devtools library and install the d3treeR package found in github
+
 ```{r}
 library(devtools)
 install_github("timelyportfolio/d3treeR")
 ```
 
 ### Launch the d3treeR package
+
 ```{r}
 library(d3treeR)
 library(treemap)
 ```
 
 ## Designing An Interactive Treemap
+
 ### Step 1: Create a static treemap using treemap()
+
 ```{r}
 tm <- treemap(realis2018_summarised,
         index=c("Planning Region", "Planning Area"),
@@ -230,7 +261,7 @@ tm <- treemap(realis2018_summarised,
 ```
 
 ### Step 2: Create the interactive version using d3tree
+
 ```{r}
 d3tree(tm,rootname = "Singapore" )
 ```
-
