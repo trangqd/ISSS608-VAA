@@ -1,0 +1,152 @@
+---
+title: "In-class Exercise 10"
+author: Quynh Trang Do
+format: dashboard
+theme: cosmo
+execute: 
+  echo: false
+editor: visual
+---
+```{r}
+pacman::p_load(tidyverse, tidyquant, timetk, plotly, glue)
+```
+
+```{r}
+SGStock <- read_csv("data/SGStock.csv")
+```
+
+```{r}
+symbols <- SGStock %>% distinct(Symbol) %>% pull()
+
+daily_prices <- tq_get(
+  x    = symbols,
+  get  = "stock.prices",
+  from = as.Date("2025-01-01"),
+  to   = Sys.Date()
+) %>% 
+  rename(Symbol = symbol) %>%      # no back-tick here
+  left_join(SGStock, by = "Symbol") 
+```
+
+# DBS
+```{r}
+start_date <- min(daily_prices$date)
+end_date <- daily_prices %>%       
+  filter(Symbol == "D05.SI") %>% 
+  summarise(end_date = max(date, na.rm = TRUE)) %>% 
+  pull(end_date)
+```
+
+## Row (height=10%)
+```{r}
+end_date <- as.Date(end_date)
+
+daily_summary <- daily_prices %>% 
+  mutate(date = as.Date(date)) %>%            # <-- match types
+  filter(Symbol == "D05.SI", date == end_date) %>% 
+  slice(1)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Opening Price"
+list(
+  color = "primary",
+  value = daily_summary$open[1])
+```
+
+```{r}
+#| content: valuebox
+#| title: "Closing Price"
+list(
+  color = "primary",
+  value = daily_summary$close[1]
+)
+```
+
+
+```{r}
+#| content: valuebox
+#| title: "Daily High"
+list(
+  color = "primary",
+  value = daily_summary$high[1]
+)
+```
+
+
+```{r}
+#| content: valuebox
+#| title: "Daily Low"
+list(
+  color = "primary",
+  value = daily_summary$low[1]
+)
+```
+
+
+## Row
+```{r}
+# Preparing data
+df <- daily_prices %>%
+  filter(Name == "DBS Group")
+
+mean_close <- mean(df$close, na.rm = TRUE)
+sd_close <- sd(df$close, na.rm = TRUE)
+ucl <- mean_close + 1 * sd_close
+lcl <- mean_close - 1 * sd_close
+
+df <- df %>%
+  mutate(flag = case_when(
+    close > ucl ~ "Above UCL",
+    close < lcl ~ "Below LCL",
+    TRUE ~ "Within Limits"
+  ))
+
+mean_lbl <- paste0("Mean: ", round(mean_close,2))
+ucl_lbl <- paste0("UCL: ", round(ucl,2))
+lcl_lbl <- paste0("LCL: ", round(lcl,2))
+
+start_lbl <- format(start_date, "%d %B %Y")
+end_lbl <- format(end_date, "%d %B %Y")
+start_lbl <- sub("^0", "", start_lbl)
+end_lbl <- sub("^0", "", end_lbl)
+dynamic_title <- glue("DBS Stock Prices from {start_lbl} to {end_lbl}")
+```
+
+```{r}
+p <- ggplot(data = df, aes(x = date, y = close)) + 
+  geom_line(color = "steelblue") +
+  geom_hline(yintercept = mean_close, color = "grey0", linetype = "dashed",
+             size = 0.5, alpha = 0.8) + 
+  geom_hline(yintercept = ucl, color = "red", linetype = "dotted",
+             size = 0.5, alpha = 0.8) + 
+  geom_hline(yintercept = lcl, color = "red", linetype = "dotted",
+             size = 0.5, alpha = 0.8) +
+  geom_point(aes(color = flag), size=1) +
+  annotate("text", x=min(df$date), y = ucl+0.3, label=ucl_lbl,
+           hjust=0, color="red", size=3.5) +
+  annotate("text", x=min(df$date), y = lcl+0.3, label=lcl_lbl,
+           hjust=0, color="red", size=3.5) +
+  annotate("text", x=min(df$date), y = mean_close + 0.3, label=mean_lbl,
+           hjust=0, color="red", size=3.5) +
+scale_color_manual(values = c("Above UCL" = "red", "Below LCL" = "red", "Within Limits" = "steelblue")) +
+  scale_x_date(date_breaks="1 month", date_labels="%b %Y") +
+  labs(title = dynamic_title, y = "Closing Price", x="") +
+  theme_classic()
+
+ggplotly(p)
+
+```
+
+# OCBC
+
+# UOB
+
+# Singtel
+
+
+# SIA
+
+
+# CapitaLand Mall Trust

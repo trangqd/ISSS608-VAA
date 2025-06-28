@@ -44,6 +44,8 @@ website:
       menu: 
         - text: "In-class Exercise 5"
           href: "VAST/MC1.html"
+        - text: "In-class Exercise 10"
+          href: "In-class Exercises/In-class exercise 10/In-class_Ex10.html"
     - text: "Take-home Exercise"
       menu: 
         - text: "Take-home Exercise 1 (Part 1)"

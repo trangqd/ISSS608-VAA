@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Quynh Trang Do">
+
+<title>In-class Exercise 10 – ISSS608-VAA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-53f539a478d6ecd1be31ce9fd30fd81c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-3e3370d44295d9fa30cc16d77ad785c2.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-53f539a478d6ecd1be31ce9fd30fd81c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="../../site_libs/quarto-dashboard/stickythead.js"></script>
+
+
+
+<script src="../../site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="../../site_libs/quarto-dashboard/components.js"></script>
+
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="../../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="../../site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="../../site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="../../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="../../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+
+</head>
+
+<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent quarto-light">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ISSS608-VAA</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hands-on-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Hands-on Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html">
+ <span class="dropdown-text">Hands-on Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html">
+ <span class="dropdown-text">Hands-on Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html">
+ <span class="dropdown-text">Hands-on Exercise 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04.html">
+ <span class="dropdown-text">Hands-on Exercise 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05.html">
+ <span class="dropdown-text">Hands-on Exercise 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex06/Hands-on_Ex06.html">
+ <span class="dropdown-text">Hands-on Exercise 6</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex08/Hands-on_Ex08_P1.html">
+ <span class="dropdown-text">Hands-on Exercise 8 (P1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex08/Hands-on_Ex08_P2.html">
+ <span class="dropdown-text">Hands-on Exercise 8 (P2)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex08/Hands-on_Ex08_P3.html">
+ <span class="dropdown-text">Hands-on Exercise 8 (P3)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex09/Hands-on_Ex09_P1.html">
+ <span class="dropdown-text">Hands-on Exercise 9 (P1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex09/Hands-on_Ex09_P2.html">
+ <span class="dropdown-text">Hands-on Exercise 9 (P2)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex09/Hands-on_Ex09_P3.html">
+ <span class="dropdown-text">Hands-on Exercise 9 (P3)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex09/Hands-on_Ex09_P4.html">
+ <span class="dropdown-text">Hands-on Exercise 9 (P4)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex09/Hands-on_Ex09_P5.html">
+ <span class="dropdown-text">Hands-on Exercise 9 (P5)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10.html">
+ <span class="dropdown-text">Hands-on Exercise 10</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">In-class Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../VAST/MC1.html">
+ <span class="dropdown-text">In-class Exercise 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class Exercises/In-class exercise 10/In-class_Ex10.html">
+ <span class="dropdown-text">In-class Exercise 10</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Take-home Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex01/Take-home_Ex01.html">
+ <span class="dropdown-text">Take-home Exercise 1 (Part 1)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex01/Take-home_Ex01_P2.html">
+ <span class="dropdown-text">Take-home Exercise 1 (Part 2)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html">
+ <span class="dropdown-text">Take-home Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Ex/Take-home_Ex03/Take-home_Ex03.html">
+ <span class="dropdown-text">Take-home Exercise 3</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">In-class Exercise 10</a></div>
+        
+        <div class="navbar-author">Quynh Trang Do</div>
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-dbs" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#dbs" data-scrolling="false" href="#dbs" aria-controls="dbs" aria-selected="true"><span class="nav-link-text">DBS</span></a></li><li class="nav-item" role="presentation"><a id="tab-ocbc" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#ocbc" data-scrolling="false" href="#ocbc" aria-controls="ocbc" aria-selected="false"><span class="nav-link-text">OCBC</span></a></li><li class="nav-item" role="presentation"><a id="tab-uob" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#uob" data-scrolling="false" href="#uob" aria-controls="uob" aria-selected="false"><span class="nav-link-text">UOB</span></a></li><li class="nav-item" role="presentation"><a id="tab-singtel" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#singtel" data-scrolling="false" href="#singtel" aria-controls="singtel" aria-selected="false"><span class="nav-link-text">Singtel</span></a></li><li class="nav-item" role="presentation"><a id="tab-sia" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#sia" data-scrolling="false" href="#sia" aria-controls="sia" aria-selected="false"><span class="nav-link-text">SIA</span></a></li><li class="nav-item" role="presentation"><a id="tab-capitaland-mall-trust" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#capitaland-mall-trust" data-scrolling="false" href="#capitaland-mall-trust" aria-controls="capitaland-mall-trust" aria-selected="false"><span class="nav-link-text">CapitaLand Mall Trust</span></a></li></ul></div></div>
+</nav>
+</header></header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="dbs" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-dbs">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-area">
+<p class="value-box-title">
+Opening Price
+</p>
+<p class="value-box-value">
+44.59
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-area">
+<p class="value-box-title">
+Closing Price
+</p>
+<p class="value-box-value">
+44.86
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-area">
+<p class="value-box-title">
+Daily High
+</p>
+<p class="value-box-value">
+44.86
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-area">
+<p class="value-box-title">
+Daily Low
+</p>
+<p class="value-box-value">
+44.5
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-16527fe7393b81948893" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-16527fe7393b81948893">{"x":{"data":[{"x":[20090,20091,20094,20095,20096,20097,20098,20101,20102,20103,20104,20105,20108,20109,20110,20111,20112,20115,20116,20119,20122,20123,20124,20125,20126,20129,20130,20131,20132,20133,20136,20137,20138,20139,20140,20143,20144,20145,20146,20147,20150,20151,20152,20153,20154,20157,20158,20159,20160,20161,20164,20165,20166,20167,20168,20171,20172,20173,20174,20175,20179,20180,20181,20182,20185,20186,20187,20188,20189,20192,20193,20194,20195,20199,20200,20201,20202,20203,20206,20207,20208,20210,20213,20214,20215,20216,20217,20221,20222,20223,20224,20227,20228,20229,20230,20231,20234,20235,20236,20237,20238,20241,20242,20243,20244,20245,20248,20249,20250,20251,20252,20255,20256,20257,20258,20259,20262,20263,20264,20265,20266],"y":[43.959999084472656,43.619998931884766,43.950000762939453,44.5,45.439998626708984,45,44.130001068115234,44.069999694824219,43.900001525878906,43.5,43.779998779296875,43.849998474121094,43.619998931884766,43.529998779296875,43.319999694824219,43.810001373291016,43.509998321533203,43.599998474121094,43.729999542236328,44.610000610351562,44.310001373291016,44.419998168945312,44.319999694824219,44.319999694824219,44.680000305175781,45.380001068115234,44.849998474121094,44.959999084472656,45.060001373291016,44.840000152587891,45,45.799999237060547,46.040000915527344,46.080001831054688,46.619998931884766,46.349998474121094,46.549999237060547,46.669998168945312,46.610000610351562,45.900001525878906,45.770000457763672,45.529998779296875,45.619998931884766,45.959999084472656,45.979999542236328,45.849998474121094,44.229999542236328,44.459999084472656,44.099998474121094,44.25,44.360000610351562,45.029998779296875,45.200000762939453,45.400001525878906,45.310001373291016,45.490001678466797,46.049999237060547,46.389999389648438,46.580001831054688,46.470001220703125,46.110000610351562,46.040000915527344,45.520000457763672,43.299999237060547,39.279998779296875,38,37.159999847412109,39.669998168945312,38.130001068115234,38.810001373291016,39.959999084472656,40.099998474121094,40.830001831054688,41.419998168945312,41.849998474121094,42.880001068115234,42.340000152587891,42.349998474121094,42.299999237060547,42.080001831054688,42.450000762939453,42.700000762939453,42.880001068115234,42.990001678466797,42.759998321533203,43.090000152587891,43.709999084472656,44.229999542236328,44.25,45.099998474121094,44.599998474121094,44.299999237060547,44.380001068115234,44.130001068115234,44.189998626708984,44.459999084472656,44.279998779296875,44.529998779296875,45.150001525878906,44.990001678466797,44.720001220703125,44.860000610351562,44.799999237060547,45.009998321533203,45.020000457763672,45.119998931884766,45.490001678466797,45.150001525878906,44.869998931884766,44.669998168945312,44.450000762939453,44.159999847412109,44.459999084472656,44.229999542236328,43.930000305175781,43.880001068115234,43.860000610351562,44.299999237060547,44.599998474121094,44.419998168945312,44.860000610351562],"text":["date: 2025-01-02<br />close: 43.96","date: 2025-01-03<br />close: 43.62","date: 2025-01-06<br />close: 43.95","date: 2025-01-07<br />close: 44.50","date: 2025-01-08<br />close: 45.44","date: 2025-01-09<br />close: 45.00","date: 2025-01-10<br />close: 44.13","date: 2025-01-13<br />close: 44.07","date: 2025-01-14<br />close: 43.90","date: 2025-01-15<br />close: 43.50","date: 2025-01-16<br />close: 43.78","date: 2025-01-17<br />close: 43.85","date: 2025-01-20<br />close: 43.62","date: 2025-01-21<br />close: 43.53","date: 2025-01-22<br />close: 43.32","date: 2025-01-23<br />close: 43.81","date: 2025-01-24<br />close: 43.51","date: 2025-01-27<br />close: 43.60","date: 2025-01-28<br />close: 43.73","date: 2025-01-31<br />close: 44.61","date: 2025-02-03<br />close: 44.31","date: 2025-02-04<br />close: 44.42","date: 2025-02-05<br />close: 44.32","date: 2025-02-06<br />close: 44.32","date: 2025-02-07<br />close: 44.68","date: 2025-02-10<br />close: 45.38","date: 2025-02-11<br />close: 44.85","date: 2025-02-12<br />close: 44.96","date: 2025-02-13<br />close: 45.06","date: 2025-02-14<br />close: 44.84","date: 2025-02-17<br />close: 45.00","date: 2025-02-18<br />close: 45.80","date: 2025-02-19<br />close: 46.04","date: 2025-02-20<br />close: 46.08","date: 2025-02-21<br />close: 46.62","date: 2025-02-24<br />close: 46.35","date: 2025-02-25<br />close: 46.55","date: 2025-02-26<br />close: 46.67","date: 2025-02-27<br />close: 46.61","date: 2025-02-28<br />close: 45.90","date: 2025-03-03<br />close: 45.77","date: 2025-03-04<br />close: 45.53","date: 2025-03-05<br />close: 45.62","date: 2025-03-06<br />close: 45.96","date: 2025-03-07<br />close: 45.98","date: 2025-03-10<br />close: 45.85","date: 2025-03-11<br />close: 44.23","date: 2025-03-12<br />close: 44.46","date: 2025-03-13<br />close: 44.10","date: 2025-03-14<br />close: 44.25","date: 2025-03-17<br />close: 44.36","date: 2025-03-18<br />close: 45.03","date: 2025-03-19<br />close: 45.20","date: 2025-03-20<br />close: 45.40","date: 2025-03-21<br />close: 45.31","date: 2025-03-24<br />close: 45.49","date: 2025-03-25<br />close: 46.05","date: 2025-03-26<br />close: 46.39","date: 2025-03-27<br />close: 46.58","date: 2025-03-28<br />close: 46.47","date: 2025-04-01<br />close: 46.11","date: 2025-04-02<br />close: 46.04","date: 2025-04-03<br />close: 45.52","date: 2025-04-04<br />close: 43.30","date: 2025-04-07<br />close: 39.28","date: 2025-04-08<br />close: 38.00","date: 2025-04-09<br />close: 37.16","date: 2025-04-10<br />close: 39.67","date: 2025-04-11<br />close: 38.13","date: 2025-04-14<br />close: 38.81","date: 2025-04-15<br />close: 39.96","date: 2025-04-16<br />close: 40.10","date: 2025-04-17<br />close: 40.83","date: 2025-04-21<br />close: 41.42","date: 2025-04-22<br />close: 41.85","date: 2025-04-23<br />close: 42.88","date: 2025-04-24<br />close: 42.34","date: 2025-04-25<br />close: 42.35","date: 2025-04-28<br />close: 42.30","date: 2025-04-29<br />close: 42.08","date: 2025-04-30<br />close: 42.45","date: 2025-05-02<br />close: 42.70","date: 2025-05-05<br />close: 42.88","date: 2025-05-06<br />close: 42.99","date: 2025-05-07<br />close: 42.76","date: 2025-05-08<br />close: 43.09","date: 2025-05-09<br />close: 43.71","date: 2025-05-13<br />close: 44.23","date: 2025-05-14<br />close: 44.25","date: 2025-05-15<br />close: 45.10","date: 2025-05-16<br />close: 44.60","date: 2025-05-19<br />close: 44.30","date: 2025-05-20<br />close: 44.38","date: 2025-05-21<br />close: 44.13","date: 2025-05-22<br />close: 44.19","date: 2025-05-23<br />close: 44.46","date: 2025-05-26<br />close: 44.28","date: 2025-05-27<br />close: 44.53","date: 2025-05-28<br />close: 45.15","date: 2025-05-29<br />close: 44.99","date: 2025-05-30<br />close: 44.72","date: 2025-06-02<br />close: 44.86","date: 2025-06-03<br />close: 44.80","date: 2025-06-04<br />close: 45.01","date: 2025-06-05<br />close: 45.02","date: 2025-06-06<br />close: 45.12","date: 2025-06-09<br />close: 45.49","date: 2025-06-10<br />close: 45.15","date: 2025-06-11<br />close: 44.87","date: 2025-06-12<br />close: 44.67","date: 2025-06-13<br />close: 44.45","date: 2025-06-16<br />close: 44.16","date: 2025-06-17<br />close: 44.46","date: 2025-06-18<br />close: 44.23","date: 2025-06-19<br />close: 43.93","date: 2025-06-20<br />close: 43.88","date: 2025-06-23<br />close: 43.86","date: 2025-06-24<br />close: 44.30","date: 2025-06-25<br />close: 44.60","date: 2025-06-26<br />close: 44.42","date: 2025-06-27<br />close: 44.86"],"type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(70,130,180,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20081.200000000001,20274.799999999999],"y":[44.135371752021726,44.135371752021726],"text":"yintercept: 44.13537","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,0.8)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20081.200000000001,20274.799999999999],"y":[45.956384831072043,45.956384831072043],"text":"yintercept: 45.95638","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(255,0,0,0.8)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20081.200000000001,20274.799999999999],"y":[42.314358672971409,42.314358672971409],"text":"yintercept: 42.31436","type":"scatter","mode":"lines","line":{"width":1.8897637795275593,"color":"rgba(255,0,0,0.8)","dash":"dot"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20138,20139,20140,20143,20144,20145,20146,20153,20154,20172,20173,20174,20175,20179,20180],"y":[46.040000915527344,46.080001831054688,46.619998931884766,46.349998474121094,46.549999237060547,46.669998168945312,46.610000610351562,45.959999084472656,45.979999542236328,46.049999237060547,46.389999389648438,46.580001831054688,46.470001220703125,46.110000610351562,46.040000915527344],"text":["date: 2025-02-19<br />close: 46.04<br />flag: Above UCL","date: 2025-02-20<br />close: 46.08<br />flag: Above UCL","date: 2025-02-21<br />close: 46.62<br />flag: Above UCL","date: 2025-02-24<br />close: 46.35<br />flag: Above UCL","date: 2025-02-25<br />close: 46.55<br />flag: Above UCL","date: 2025-02-26<br />close: 46.67<br />flag: Above UCL","date: 2025-02-27<br />close: 46.61<br />flag: Above UCL","date: 2025-03-06<br />close: 45.96<br />flag: Above UCL","date: 2025-03-07<br />close: 45.98<br />flag: Above UCL","date: 2025-03-25<br />close: 46.05<br />flag: Above UCL","date: 2025-03-26<br />close: 46.39<br />flag: Above UCL","date: 2025-03-27<br />close: 46.58<br />flag: Above UCL","date: 2025-03-28<br />close: 46.47<br />flag: Above UCL","date: 2025-04-01<br />close: 46.11<br />flag: Above UCL","date: 2025-04-02<br />close: 46.04<br />flag: Above UCL"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,0,0,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,0,0,1)"}},"hoveron":"points","name":"Above UCL","legendgroup":"Above UCL","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20185,20186,20187,20188,20189,20192,20193,20194,20195,20199,20200,20206,20207],"y":[39.279998779296875,38,37.159999847412109,39.669998168945312,38.130001068115234,38.810001373291016,39.959999084472656,40.099998474121094,40.830001831054688,41.419998168945312,41.849998474121094,42.299999237060547,42.080001831054688],"text":["date: 2025-04-07<br />close: 39.28<br />flag: Below LCL","date: 2025-04-08<br />close: 38.00<br />flag: Below LCL","date: 2025-04-09<br />close: 37.16<br />flag: Below LCL","date: 2025-04-10<br />close: 39.67<br />flag: Below LCL","date: 2025-04-11<br />close: 38.13<br />flag: Below LCL","date: 2025-04-14<br />close: 38.81<br />flag: Below LCL","date: 2025-04-15<br />close: 39.96<br />flag: Below LCL","date: 2025-04-16<br />close: 40.10<br />flag: Below LCL","date: 2025-04-17<br />close: 40.83<br />flag: Below LCL","date: 2025-04-21<br />close: 41.42<br />flag: Below LCL","date: 2025-04-22<br />close: 41.85<br />flag: Below LCL","date: 2025-04-28<br />close: 42.30<br />flag: Below LCL","date: 2025-04-29<br />close: 42.08<br />flag: Below LCL"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(255,0,0,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(255,0,0,1)"}},"hoveron":"points","name":"Below LCL","legendgroup":"Below LCL","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20090,20091,20094,20095,20096,20097,20098,20101,20102,20103,20104,20105,20108,20109,20110,20111,20112,20115,20116,20119,20122,20123,20124,20125,20126,20129,20130,20131,20132,20133,20136,20137,20147,20150,20151,20152,20157,20158,20159,20160,20161,20164,20165,20166,20167,20168,20171,20181,20182,20201,20202,20203,20208,20210,20213,20214,20215,20216,20217,20221,20222,20223,20224,20227,20228,20229,20230,20231,20234,20235,20236,20237,20238,20241,20242,20243,20244,20245,20248,20249,20250,20251,20252,20255,20256,20257,20258,20259,20262,20263,20264,20265,20266],"y":[43.959999084472656,43.619998931884766,43.950000762939453,44.5,45.439998626708984,45,44.130001068115234,44.069999694824219,43.900001525878906,43.5,43.779998779296875,43.849998474121094,43.619998931884766,43.529998779296875,43.319999694824219,43.810001373291016,43.509998321533203,43.599998474121094,43.729999542236328,44.610000610351562,44.310001373291016,44.419998168945312,44.319999694824219,44.319999694824219,44.680000305175781,45.380001068115234,44.849998474121094,44.959999084472656,45.060001373291016,44.840000152587891,45,45.799999237060547,45.900001525878906,45.770000457763672,45.529998779296875,45.619998931884766,45.849998474121094,44.229999542236328,44.459999084472656,44.099998474121094,44.25,44.360000610351562,45.029998779296875,45.200000762939453,45.400001525878906,45.310001373291016,45.490001678466797,45.520000457763672,43.299999237060547,42.880001068115234,42.340000152587891,42.349998474121094,42.450000762939453,42.700000762939453,42.880001068115234,42.990001678466797,42.759998321533203,43.090000152587891,43.709999084472656,44.229999542236328,44.25,45.099998474121094,44.599998474121094,44.299999237060547,44.380001068115234,44.130001068115234,44.189998626708984,44.459999084472656,44.279998779296875,44.529998779296875,45.150001525878906,44.990001678466797,44.720001220703125,44.860000610351562,44.799999237060547,45.009998321533203,45.020000457763672,45.119998931884766,45.490001678466797,45.150001525878906,44.869998931884766,44.669998168945312,44.450000762939453,44.159999847412109,44.459999084472656,44.229999542236328,43.930000305175781,43.880001068115234,43.860000610351562,44.299999237060547,44.599998474121094,44.419998168945312,44.860000610351562],"text":["date: 2025-01-02<br />close: 43.96<br />flag: Within Limits","date: 2025-01-03<br />close: 43.62<br />flag: Within Limits","date: 2025-01-06<br />close: 43.95<br />flag: Within Limits","date: 2025-01-07<br />close: 44.50<br />flag: Within Limits","date: 2025-01-08<br />close: 45.44<br />flag: Within Limits","date: 2025-01-09<br />close: 45.00<br />flag: Within Limits","date: 2025-01-10<br />close: 44.13<br />flag: Within Limits","date: 2025-01-13<br />close: 44.07<br />flag: Within Limits","date: 2025-01-14<br />close: 43.90<br />flag: Within Limits","date: 2025-01-15<br />close: 43.50<br />flag: Within Limits","date: 2025-01-16<br />close: 43.78<br />flag: Within Limits","date: 2025-01-17<br />close: 43.85<br />flag: Within Limits","date: 2025-01-20<br />close: 43.62<br />flag: Within Limits","date: 2025-01-21<br />close: 43.53<br />flag: Within Limits","date: 2025-01-22<br />close: 43.32<br />flag: Within Limits","date: 2025-01-23<br />close: 43.81<br />flag: Within Limits","date: 2025-01-24<br />close: 43.51<br />flag: Within Limits","date: 2025-01-27<br />close: 43.60<br />flag: Within Limits","date: 2025-01-28<br />close: 43.73<br />flag: Within Limits","date: 2025-01-31<br />close: 44.61<br />flag: Within Limits","date: 2025-02-03<br />close: 44.31<br />flag: Within Limits","date: 2025-02-04<br />close: 44.42<br />flag: Within Limits","date: 2025-02-05<br />close: 44.32<br />flag: Within Limits","date: 2025-02-06<br />close: 44.32<br />flag: Within Limits","date: 2025-02-07<br />close: 44.68<br />flag: Within Limits","date: 2025-02-10<br />close: 45.38<br />flag: Within Limits","date: 2025-02-11<br />close: 44.85<br />flag: Within Limits","date: 2025-02-12<br />close: 44.96<br />flag: Within Limits","date: 2025-02-13<br />close: 45.06<br />flag: Within Limits","date: 2025-02-14<br />close: 44.84<br />flag: Within Limits","date: 2025-02-17<br />close: 45.00<br />flag: Within Limits","date: 2025-02-18<br />close: 45.80<br />flag: Within Limits","date: 2025-02-28<br />close: 45.90<br />flag: Within Limits","date: 2025-03-03<br />close: 45.77<br />flag: Within Limits","date: 2025-03-04<br />close: 45.53<br />flag: Within Limits","date: 2025-03-05<br />close: 45.62<br />flag: Within Limits","date: 2025-03-10<br />close: 45.85<br />flag: Within Limits","date: 2025-03-11<br />close: 44.23<br />flag: Within Limits","date: 2025-03-12<br />close: 44.46<br />flag: Within Limits","date: 2025-03-13<br />close: 44.10<br />flag: Within Limits","date: 2025-03-14<br />close: 44.25<br />flag: Within Limits","date: 2025-03-17<br />close: 44.36<br />flag: Within Limits","date: 2025-03-18<br />close: 45.03<br />flag: Within Limits","date: 2025-03-19<br />close: 45.20<br />flag: Within Limits","date: 2025-03-20<br />close: 45.40<br />flag: Within Limits","date: 2025-03-21<br />close: 45.31<br />flag: Within Limits","date: 2025-03-24<br />close: 45.49<br />flag: Within Limits","date: 2025-04-03<br />close: 45.52<br />flag: Within Limits","date: 2025-04-04<br />close: 43.30<br />flag: Within Limits","date: 2025-04-23<br />close: 42.88<br />flag: Within Limits","date: 2025-04-24<br />close: 42.34<br />flag: Within Limits","date: 2025-04-25<br />close: 42.35<br />flag: Within Limits","date: 2025-04-30<br />close: 42.45<br />flag: Within Limits","date: 2025-05-02<br />close: 42.70<br />flag: Within Limits","date: 2025-05-05<br />close: 42.88<br />flag: Within Limits","date: 2025-05-06<br />close: 42.99<br />flag: Within Limits","date: 2025-05-07<br />close: 42.76<br />flag: Within Limits","date: 2025-05-08<br />close: 43.09<br />flag: Within Limits","date: 2025-05-09<br />close: 43.71<br />flag: Within Limits","date: 2025-05-13<br />close: 44.23<br />flag: Within Limits","date: 2025-05-14<br />close: 44.25<br />flag: Within Limits","date: 2025-05-15<br />close: 45.10<br />flag: Within Limits","date: 2025-05-16<br />close: 44.60<br />flag: Within Limits","date: 2025-05-19<br />close: 44.30<br />flag: Within Limits","date: 2025-05-20<br />close: 44.38<br />flag: Within Limits","date: 2025-05-21<br />close: 44.13<br />flag: Within Limits","date: 2025-05-22<br />close: 44.19<br />flag: Within Limits","date: 2025-05-23<br />close: 44.46<br />flag: Within Limits","date: 2025-05-26<br />close: 44.28<br />flag: Within Limits","date: 2025-05-27<br />close: 44.53<br />flag: Within Limits","date: 2025-05-28<br />close: 45.15<br />flag: Within Limits","date: 2025-05-29<br />close: 44.99<br />flag: Within Limits","date: 2025-05-30<br />close: 44.72<br />flag: Within Limits","date: 2025-06-02<br />close: 44.86<br />flag: Within Limits","date: 2025-06-03<br />close: 44.80<br />flag: Within Limits","date: 2025-06-04<br />close: 45.01<br />flag: Within Limits","date: 2025-06-05<br />close: 45.02<br />flag: Within Limits","date: 2025-06-06<br />close: 45.12<br />flag: Within Limits","date: 2025-06-09<br />close: 45.49<br />flag: Within Limits","date: 2025-06-10<br />close: 45.15<br />flag: Within Limits","date: 2025-06-11<br />close: 44.87<br />flag: Within Limits","date: 2025-06-12<br />close: 44.67<br />flag: Within Limits","date: 2025-06-13<br />close: 44.45<br />flag: Within Limits","date: 2025-06-16<br />close: 44.16<br />flag: Within Limits","date: 2025-06-17<br />close: 44.46<br />flag: Within Limits","date: 2025-06-18<br />close: 44.23<br />flag: Within Limits","date: 2025-06-19<br />close: 43.93<br />flag: Within Limits","date: 2025-06-20<br />close: 43.88<br />flag: Within Limits","date: 2025-06-23<br />close: 43.86<br />flag: Within Limits","date: 2025-06-24<br />close: 44.30<br />flag: Within Limits","date: 2025-06-25<br />close: 44.60<br />flag: Within Limits","date: 2025-06-26<br />close: 44.42<br />flag: Within Limits","date: 2025-06-27<br />close: 44.86<br />flag: Within Limits"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(70,130,180,1)","opacity":1,"size":3.7795275590551185,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(70,130,180,1)"}},"hoveron":"points","name":"Within Limits","legendgroup":"Within Limits","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20090],"y":[46.25638483107204],"text":"UCL: 45.96","hovertext":"x: 2025-01-02<br />y: 46.25638","textfont":{"size":13.228346456692915,"color":"rgba(255,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20090],"y":[42.614358672971406],"text":"LCL: 42.31","hovertext":"x: 2025-01-02<br />y: 42.61436","textfont":{"size":13.228346456692915,"color":"rgba(255,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[20090],"y":[44.435371752021723],"text":"Mean: 44.14","hovertext":"x: 2025-01-02<br />y: 44.43537","textfont":{"size":13.228346456692915,"color":"rgba(255,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":45.223744292237441,"r":7.3059360730593621,"b":27.031963470319642,"l":48.949771689497737},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"DBS Stock Prices from 2 January 2025 to 27 June 2025","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[20081.200000000001,20274.799999999999],"tickmode":"array","ticktext":["Jan 2025","Feb 2025","Mar 2025","Apr 2025","May 2025","Jun 2025","Jul 2025"],"tickvals":[20089,20120,20148,20179,20209,20240,20270],"categoryorder":"array","categoryarray":["Jan 2025","Feb 2025","Mar 2025","Apr 2025","May 2025","Jun 2025","Jul 2025"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[36.684499931335452,47.14549808502197],"tickmode":"array","ticktext":["37.5","40.0","42.5","45.0"],"tickvals":[37.5,40,42.5,45],"categoryorder":"array","categoryarray":["37.5","40.0","42.5","45.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716894984},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176002,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Closing Price","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"flag","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"459446562e97":{"x":{},"y":{},"type":"scatter"},"45945bd956b2":{"yintercept":{}},"459438fa3":{"yintercept":{}},"45946eda5480":{"yintercept":{}},"4594569f403e":{"x":{},"y":{},"colour":{}},"459457d7665f":{"x":{},"y":{}},"45942c23dd4":{"x":{},"y":{}},"4594635e1833":{"x":{},"y":{}}},"cur_data":"459446562e97","visdat":{"459446562e97":["function (y) ","x"],"45945bd956b2":["function (y) ","x"],"459438fa3":["function (y) ","x"],"45946eda5480":["function (y) ","x"],"4594569f403e":["function (y) ","x"],"459457d7665f":["function (y) ","x"],"45942c23dd4":["function (y) ","x"],"4594635e1833":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+<div id="ocbc" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-ocbc">
+
+</div>
+<div id="uob" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-uob">
+
+</div>
+<div id="singtel" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-singtel">
+
+</div>
+<div id="sia" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-sia">
+
+</div>
+<div id="capitaland-mall-trust" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-capitaland-mall-trust">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: ; grid-auto-columns: minmax(0, 1fr);">
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>
